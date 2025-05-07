@@ -1,9 +1,15 @@
-import Image from "next/image";
+import CursorGradient from "@/components/cursorGradient";
+import HeroSection from "@/components/hero";
+import TestimonialsSection from "@/components/section";
+import Topbar from "@/components/topbar";
 
 export default function Home() {
   return (
-    <div>
-      hello man
-    </div>
+    <>
+      <CursorGradient />
+      <Topbar/>
+      <HeroSection/>
+      <TestimonialsSection/>
+    </>
   );
 }

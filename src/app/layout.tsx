@@ -24,8 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+        <link
+          href="https://fonts.googleapis.com/css2?family=McLaren&display=swap"
+          rel="stylesheet"
+          precedence="default"
+        />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased mclaren-font`}
       >
         {children}
       </body>
