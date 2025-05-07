@@ -1,6 +1,6 @@
 export default function HeroSection() {
   return (
-    <div className="min-h-screen mclaren-font bg-[#11071F] text-white flex flex-col items-center justify-center px-4 text-center">
+    <div className="min-h-fit mclaren-font text-white flex flex-col items-center justify-center py-14 pt-36 text-center">
       {/* Avatar + Tagline */}
       <div className="relative mb-8">
         <div className="flex justify-center">

@@ -5,11 +5,13 @@ import Topbar from "@/components/topbar";
 
 export default function Home() {
   return (
-    <>
+    <main className="relative"> {/* Added relative to establish stacking context */}
       <CursorGradient />
-      <Topbar/>
-      <HeroSection/>
-      <TestimonialsSection/>
-    </>
+      <div className="relative z-10 "> {/* Wrapped content in a div with higher z-index */}
+        <Topbar/>
+        <HeroSection/>
+        <TestimonialsSection/>
+      </div>
+    </main>
   );
 }
