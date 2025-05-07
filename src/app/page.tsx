@@ -1,5 +1,6 @@
 import CursorGradient from "@/components/cursorGradient";
 import HeroSection from "@/components/hero";
+import ProjectCard from "@/components/projectCard";
 import TestimonialsSection from "@/components/section";
 import Topbar from "@/components/topbar";
 
@@ -11,6 +12,11 @@ export default function Home() {
         <Topbar/>
         <HeroSection/>
         <TestimonialsSection/>
+        <ProjectCard
+          title="Example Project"
+          description="A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more."
+          image="/project exp.png"
+        />
       </div>
     </main>
   );
