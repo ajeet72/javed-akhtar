@@ -22,7 +22,7 @@ export default function TestimonialsSection() {
             {testimonials.map((t, index) => (
               <div
                 key={index}
-                className="bg-white text-black bg-opacity-10 p-6 rounded-2xl shadow-md hover:shadow-lg transition duration-300"
+                className="hover:scale-[1.04] bg-white text-black bg-opacity-10 p-6 rounded-2xl shadow-md hover:shadow-lg transition duration-300"
               >
                 <p className="text-lg italic mb-4">"{t.text}"</p>
                 <h4 className="text-xl font-semibold">{t.name}</h4>
