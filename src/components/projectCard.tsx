@@ -21,7 +21,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.2,
         ease: "easeOut",
         when: "beforeChildren",
         staggerChildren: 0.2,
@@ -34,7 +34,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.2 },
     },
   };
 
@@ -43,7 +43,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.8, ease: "backOut" },
+      transition: { duration: 0.2, ease: "backOut" },
     },
     hover: {
       scale: 1.02,
