@@ -29,7 +29,7 @@ export default function ContactForm() {
             <div className="flex items-center space-x-3">
               <Phone />
               <a
-                href="httpps://wa.me/916206859849"
+                href="https://wa.me/916206859849"
                 target="_blank"
                 className="hover:text-slate-400 transition-colors duration-300 transform hover:scale-105"
               >
