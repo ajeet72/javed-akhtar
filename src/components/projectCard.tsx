@@ -62,7 +62,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
 
   return (
     <motion.div
-      className={`cursor-pointer group flex flex-col md:flex-row items-center justify-center px-6 sm:px-12 md:px-24 lg:px-32 xl:px-40 2xl:max-w-[1400px] 2xl:mx-auto py-12 gap-8 ${
+      className={`cursor-pointer group flex flex-col md:flex-row items-center justify-center px-6 sm:px-12 md:px-14 lg:px-20 xl:px-24 2xl:max-w-[1400px] 2xl:mx-auto py-12 gap-8 ${
         reverse ? "md:flex-row-reverse" : ""
       }`}
       initial="hidden"
@@ -88,7 +88,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           <motion.p
             className={`${
               reverse ? "text-left" : ""
-            } relative w-full min-w-[280px] max-w-2xl backdrop-blur-lg bg-gradient-to-r from-white/10 to-white/5 p-4 rounded-lg text-sm text-gray-300 shadow-md`}
+            } relative w-full min-w-[280px] backdrop-blur-lg bg-gradient-to-r from-white/10 to-white/5 p-4 rounded-lg text-sm text-gray-300 shadow-md`}
             whileHover={{
               scale: 1.01,
               boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)",

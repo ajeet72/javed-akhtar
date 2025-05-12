@@ -124,7 +124,7 @@ export default function TopBar() {
         ref={logoRef}
         className="text-2xl font-bold cursor-pointer hover:scale-110 transition-transform duration-300"
       >
-        ∑
+        <img src="/logo.png" alt="Logo" className='h-6' />
       </div>
 
       {/* Desktop Navigation */}
