@@ -1,11 +1,9 @@
-import {
-  Mail,
-  MailCheck,
-  MailCheckIcon,
-  MessagesSquareIcon,
-} from "lucide-react";
+"use client";
+
+import { Mail, MailIcon, Phone } from "lucide-react";
 
 export default function ContactForm() {
+
   return (
     <div className="min-h-fit text-white flex items-center justify-center px-8 py-16">
       <div className="max-w-6xl w-full flex flex-col md:flex-row md:space-x-12 space-y-12 md:space-y-0">
@@ -20,22 +18,23 @@ export default function ContactForm() {
           </p>
           <div className="space-y-4 text-sm text-gray-200">
             <div className="flex items-center space-x-3">
-              <Mail />
+              <MailIcon />
               <a
                 href="mailto:ajeet62068bca@gmail.com"
-                target="_blank"
-                className="hover:text-slate-400 transition-colors duration-300 transform hover:scale-1.5"
+                className="hover:text-slate-400 transition-colors duration-300 transform hover:scale-105"
               >
                 ajeet62068bca@gmail.com
               </a>
             </div>
             <div className="flex items-center space-x-3">
-              <span className="text-xl">📞</span>
-              <span>(969) 819-8061</span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <span className="text-xl">📍</span>
-              <span>43 Roselle St. New York</span>
+              <Phone />
+              <a
+                href="httpps://wa.me/916206859849"
+                target="_blank"
+                className="hover:text-slate-400 transition-colors duration-300 transform hover:scale-105"
+              >
+                +91 62068 59849
+              </a>
             </div>
           </div>
         </div>
