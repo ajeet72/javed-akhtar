@@ -2,6 +2,7 @@ import CursorGradient from "@/components/cursorGradient";
 import HeroSection from "@/components/hero";
 import ProjectCard from "@/components/projectCard";
 import TestimonialsSection from "@/components/section";
+import SkillsComponent from "@/components/skillsSection";
 import Topbar from "@/components/topbar";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <div className="relative z-10 "> {/* Wrapped content in a div with higher z-index */}
         <Topbar/>
         <HeroSection/>
+        <SkillsComponent/>
         <TestimonialsSection/>
         <ProjectCard
           title="Example Project"

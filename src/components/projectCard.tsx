@@ -34,7 +34,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.2 },
+      transition: { duration: 0.4 },
     },
   };
 
@@ -43,11 +43,11 @@ const ProjectCard: FC<ProjectCardProps> = ({
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.2, ease: "backOut" },
+      transition: { duration: 0.4, ease: "backOut" },
     },
     hover: {
       scale: 1.02,
-      transition: { duration: 0.3 },
+      transition: { duration: 0.6 },
     },
   };
 
@@ -56,15 +56,15 @@ const ProjectCard: FC<ProjectCardProps> = ({
     hover: {
       scale: [1, 1.2, 1],
       rotate: [0, 10, -10, 0],
-      transition: { duration: 0.6 }
-    }
+      transition: { duration: 0.6 },
+    },
   };
 
   return (
     <motion.div
-      className={`cursor-pointer group flex flex-col md:flex-row items-center justify-center px-6 sm:px-12 md:px-24 lg:px-48 xl:px-60 2xl:px-72 ${
+      className={`cursor-pointer group flex flex-col md:flex-row items-center justify-center px-6 sm:px-12 md:px-24 lg:px-32 xl:px-40 2xl:max-w-[1400px] 2xl:mx-auto py-12 gap-8 ${
         reverse ? "md:flex-row-reverse" : ""
-      } py-12 gap-8`}
+      }`}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -72,13 +72,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
     >
       {/* Text Section */}
       <motion.div
-        className={`space-y-4 w-full md:w-1/2 ${reverse ? "text-right" : "text-left"}`}
+        className={`space-y-4 w-full md:w-8xl ${reverse ? "text-right" : "text-left"}`}
         variants={containerVariants}
       >
-        <motion.p
-          className="text-sm text-purple-400"
-          variants={itemVariants}
-        >
+        <motion.p className="text-sm text-purple-400" variants={itemVariants}>
           Featured Project
         </motion.p>
         <motion.h3
@@ -91,10 +88,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
           <motion.p
             className={`${
               reverse ? "text-left" : ""
-            } relative w-full backdrop-blur-lg bg-gradient-to-r from-white/10 to-white/5 p-4 rounded-lg text-sm text-gray-300 shadow-md`}
+            } relative w-full min-w-[280px] max-w-2xl backdrop-blur-lg bg-gradient-to-r from-white/10 to-white/5 p-4 rounded-lg text-sm text-gray-300 shadow-md`}
             whileHover={{
               scale: 1.01,
-              boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)"
+              boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)",
             }}
           >
             {description}
@@ -106,18 +103,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
           }`}
           variants={itemVariants}
         >
-          <motion.span
-            variants={emojiVariants}
-            initial="rest"
-            whileHover="hover"
-          >
+          <motion.span variants={emojiVariants} initial="rest" whileHover="hover">
             🌸
           </motion.span>
-          <motion.span
-            variants={emojiVariants}
-            initial="rest"
-            whileHover="hover"
-          >
+          <motion.span variants={emojiVariants} initial="rest" whileHover="hover">
             ❄️
           </motion.span>
         </motion.div>
@@ -134,10 +123,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
         <motion.img
           src={image}
           alt={`${title} preview`}
-          className="w-2xl rounded-tl-lg transition-all duration-300 grayscale group-hover:grayscale-0"
+          className="lg:w-3xl w-6xl rounded-tl-lg transition-all duration-300 grayscale group-hover:grayscale-0"
           whileHover={{
             scale: 1.02,
-            boxShadow: "0 20px 25px -5px rgba(168, 85, 247, 0.2)"
+            boxShadow: "0 20px 25px -5px rgba(168, 85, 247, 0.2)",
           }}
         />
       </motion.div>
