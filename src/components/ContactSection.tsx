@@ -1,3 +1,10 @@
+import {
+  Mail,
+  MailCheck,
+  MailCheckIcon,
+  MessagesSquareIcon,
+} from "lucide-react";
+
 export default function ContactForm() {
   return (
     <div className="min-h-fit text-white flex items-center justify-center px-8 py-16">
@@ -8,12 +15,19 @@ export default function ContactForm() {
             Ask whatever you have <br /> in your mind
           </h1>
           <p className="text-base sm:text-lg text-gray-300 mb-8">
-            Whether you have questions or are ready to discuss your business, we’re here to help. Reach out today.
+            Whether you have questions or are ready to discuss your business,
+            we’re here to help. Reach out today.
           </p>
           <div className="space-y-4 text-sm text-gray-200">
             <div className="flex items-center space-x-3">
-              <span className="text-xl">✉️</span>
-              <span>admin@raddision.com</span>
+              <Mail />
+              <a
+                href="mailto:ajeet62068bca@gmail.com"
+                target="_blank"
+                className="hover:text-slate-400 transition-colors duration-300 transform hover:scale-1.5"
+              >
+                ajeet62068bca@gmail.com
+              </a>
             </div>
             <div className="flex items-center space-x-3">
               <span className="text-xl">📞</span>
