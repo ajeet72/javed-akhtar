@@ -3,7 +3,7 @@ export default function ContactForm() {
     <div className="min-h-fit text-white flex items-center justify-center px-8 py-16">
       <div className="max-w-6xl w-full flex flex-col md:flex-row md:space-x-12 space-y-12 md:space-y-0">
         {/* Left: Info Section */}
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 px-4 lg:px-0">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight ">
             Ask whatever you have <br /> in your mind
           </h1>

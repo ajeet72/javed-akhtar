@@ -62,7 +62,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
 
   return (
     <motion.div
-      className={`cursor-pointer group flex flex-col md:flex-row items-center justify-center px-6 sm:px-12 md:px-14 lg:px-20 xl:px-24 2xl:max-w-[1400px] 2xl:mx-auto py-12 gap-8 ${
+      className={`cursor-pointer group flex flex-col md:flex-row items-center justify-center px-6 sm:px-12 md:px-14 lg:px-20 xl:px-28 2xl:max-w-[1400px] 2xl:mx-auto py-12 gap-8 ${
         reverse ? "md:flex-row-reverse" : ""
       }`}
       initial="hidden"
