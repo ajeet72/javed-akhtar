@@ -1,6 +1,7 @@
-import ContactForm from "@/components/ContactSection";
+import ContactForm from "@/components/contactSection";
 import CursorGradient from "@/components/cursorGradient";
 import HeroSection from "@/components/hero";
+import ProcessSection from "@/components/porcessSection";
 import ProjectCard from "@/components/projectCard";
 import TestimonialsSection from "@/components/section";
 import SkillsComponent from "@/components/skillsSection";
@@ -13,6 +14,7 @@ export default function Home() {
       <div className="relative z-10 "> {/* Wrapped content in a div with higher z-index */}
         <Topbar/>
         <HeroSection/>
+        <ProcessSection/>
         <SkillsComponent/>
         <TestimonialsSection/>
         <ProjectCard

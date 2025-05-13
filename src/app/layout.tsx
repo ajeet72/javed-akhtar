@@ -33,6 +33,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased mclaren-font bg-[#11071F]`}
       >
+        <SecurityBlocker />
         {children}
       </body>
     </html>
