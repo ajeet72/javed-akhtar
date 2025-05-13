@@ -8,30 +8,38 @@ import {
   Zap,
   CheckCircle2,
   Target,
-  Terminal,
-  Code,
-  Activity,
-  Cpu,
 } from 'lucide-react';
 
-const cardWrapper = "bg-black text-white p-6 rounded-3xl shadow-lg min-h-[28rem] flex flex-col justify-between";
+const cardWrapper =
+  "bg-black text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[28rem]";
 
 export default function ProcessSection() {
   return (
-    <div className=" py-10 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto grid gap-6 md:grid-cols-3">
-        <DiscoveryAnalysisProcess />
-        <DevelopmentTestProcess />
-        <LaunchMaintainProcess />
+    <section className="py-12 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Section heading */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">Our Development Process</h2>
+          <p className="text-gray-400 mt-2 text-sm md:text-base max-w-2xl mx-auto">
+            A clear, tested, and professional path from discovery to deployment. We deliver robust software every step of the way.
+          </p>
+        </div>
+
+        {/* Responsive grid of process cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <DiscoveryAnalysisProcess />
+          <DevelopmentTestProcess />
+          <LaunchMaintainProcess />
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
 function LaunchMaintainProcess() {
   return (
     <div className={cardWrapper}>
-      <div className="bg-[#1a1a1a] rounded-2xl p-4 space-y-4 flex-1 flex flex-col">
+      <div className="bg-[#1a1a1a] rounded-2xl p-4 flex-1 flex flex-col space-y-4">
         <div className="flex space-x-2">
           <div className="w-3 h-3 bg-red-500 rounded-full" />
           <div className="w-3 h-3 bg-yellow-400 rounded-full" />
@@ -58,8 +66,7 @@ function LaunchMaintainProcess() {
           </div>
         </div>
 
-        {/* Additional Detail Section */}
-        <div className="bg-black/40 rounded-lg p-2 text-xs text-gray-400 mt-4">
+        <div className="bg-black/40 rounded-lg p-2 text-xs text-gray-400">
           <p>Last Deployed: <span className="text-white">12 mins ago</span></p>
           <p>Uptime: <span className="text-white">99.98%</span></p>
         </div>
@@ -97,7 +104,6 @@ function DevelopmentTestProcess() {
     return mean + tf.exp(0.5 * log_var) * epsilon
         </pre>
 
-        {/* Additional Detail Section */}
         <div className="bg-black/40 rounded-lg p-2 text-xs text-gray-400 mt-4">
           <p>Tests Passed: <span className="text-white">97%</span></p>
           <p>Build Time: <span className="text-white">12s</span></p>
@@ -148,7 +154,6 @@ function DiscoveryAnalysisProcess() {
           </div>
         </div>
 
-        {/* Additional Detail Section */}
         <div className="bg-black/40 rounded-lg p-2 text-xs text-gray-400 mt-4">
           <p>Last Insight: <span className="text-white">User churn rising</span></p>
           <p>Key Focus: <span className="text-white">Product-Market Fit</span></p>
