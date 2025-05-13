@@ -1,6 +1,10 @@
 'use client';
+import React, { useEffect, useState } from 'react';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-javascript';
 
-import React from 'react';
 import {
   Gauge,
   RefreshCw,
@@ -9,6 +13,65 @@ import {
   CheckCircle2,
   Target,
 } from 'lucide-react';
+
+const codeSnippets = [
+  `function safelyAccessUser(user?: { name: string }): string {
+    if (!user) {
+      return "🤷‍♂️ User left the universe (or you forgot a null check)";
+    }
+    const username = user.name;
+    return username
+      ? username
+      : "🤷‍♂️ Mysterious entity detected — no name provided.";
+  }`,
+
+  `setTimeout(() => {
+    console.log("⏳ Still waiting...");
+  }, 1000 * 60 * 60 * 24 * 365); // 1 year
+
+  function giveUp() {
+    console.log("🥲 Maybe next year...");
+  }
+
+  giveUp();`,
+
+  `function isBugAFeature(bug: boolean): string {
+    if (bug) return "✅ It's a feature now!";
+    return "🧐 Still a feature, but undocumented.";
+  }
+
+  console.log(isBugAFeature(true));`,
+
+  `const crush = undefined;
+  const backup = null;
+  const reality = crush ?? backup ?? "💔 Stay single, stay productive";
+
+  function love() {
+    return reality;
+  }
+
+  console.log(love());`,
+
+  `const day = ["☕", "💻", "😵", "☕", "💻", "🤯", "🛌"];
+
+  for (let i = 0; i < day.length; i++) {
+    console.log(\`Hour \${i + 1}: \${day[i]}\`);
+  }
+
+  console.log("🔁 Repeat tomorrow");`,
+
+  `const isProd = true;
+
+  function testFeature() {
+    if (isProd) {
+      throw new Error("🚨 You’re testing in production. Again.");
+    }
+    console.log("✅ Safe to test!");
+  }
+
+  testFeature();`
+];
+
 
 const cardWrapper =
   "bg-black text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[28rem]";
@@ -82,84 +145,145 @@ function LaunchMaintainProcess() {
   );
 }
 
-function DevelopmentTestProcess() {
+export function DevelopmentTestProcess() {
+  const [displayedText, setDisplayedText] = useState('');
+  const [snippetIndex, setSnippetIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [charIndex, setCharIndex] = useState(0);
+  const [highlightedHtml, setHighlightedHtml] = useState('');
+
+  useEffect(() => {
+    const highlighted = Prism.highlight(
+      displayedText,
+      Prism.languages.typescript,
+      'typescript'
+    );
+    setHighlightedHtml(highlighted);
+  }, [displayedText]);
+
+  useEffect(() => {
+    const currentSnippet = codeSnippets[snippetIndex];
+    let timer: NodeJS.Timeout;
+
+    if (!isDeleting && charIndex < currentSnippet.length) {
+      timer = setTimeout(() => {
+        setDisplayedText(currentSnippet.slice(0, charIndex + 1));
+        setCharIndex((prev) => prev + 1);
+      }, 20);
+    } else if (isDeleting && charIndex > 0) {
+      timer = setTimeout(() => {
+        setDisplayedText(currentSnippet.slice(0, charIndex - 1));
+        setCharIndex((prev) => prev - 1);
+      }, 10);
+    } else if (!isDeleting && charIndex === currentSnippet.length) {
+      timer = setTimeout(() => setIsDeleting(true), 2000);
+    } else if (isDeleting && charIndex === 0) {
+      setIsDeleting(false);
+      setSnippetIndex((prev) => (prev + 1) % codeSnippets.length);
+    }
+
+    return () => clearTimeout(timer);
+  }, [charIndex, isDeleting, snippetIndex]);
+
   return (
-    <div className={cardWrapper}>
-      <div className="bg-[#1a1a1a] rounded-2xl px-4 pt-3 pb-4 font-mono text-sm flex-1 flex flex-col">
-        <div className="flex space-x-2 mb-3">
+    <div className="bg-black text-white p-6 rounded-3xl w-full shadow-lg flex flex-col justify-between min-h-[450px]">
+      {/* Code UI */}
+      <div className="bg-[#1a1a1a] rounded-2xl px-4 pt-3 pb-5 font-mono text-sm leading-6 flex-grow flex flex-col">
+        {/* Browser-style dots */}
+        <div className="flex space-x-2 mb-2">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
 
-        <pre className="text-left whitespace-pre-wrap text-gray-300 flex-1">
-<span className="text-purple-400">class</span> Sampling(layers.Layer):
-  <span className="text-yellow-300">"""Samples z from (mean, log_var)."""</span>
-
-  <span className="text-purple-400">def</span> <span className="text-blue-400">call</span>(self, inputs):
-    mean, log_var = inputs
-    batch = tf.shape(mean)[0]
-    dim = tf.shape(mean)[1]
-    epsilon = tf.random.normal(shape=(batch, dim))
-    return mean + tf.exp(0.5 * log_var) * epsilon
-        </pre>
-
-        <div className="bg-black/40 rounded-lg p-2 text-xs text-gray-400 mt-4">
-          <p>Tests Passed: <span className="text-white">97%</span></p>
-          <p>Build Time: <span className="text-white">12s</span></p>
+        {/* Typing animation with proper wrapping */}
+        <div className="flex-1 overflow-auto">
+          <pre className="text-left whitespace-pre-wrap break-all">
+            <code 
+              className="language-typescript"
+              dangerouslySetInnerHTML={{ __html: highlightedHtml }}
+              style={{
+                display: 'inline-block',
+                wordBreak: 'break-word',
+                whiteSpace: 'pre-wrap'
+              }}
+            />
+            {displayedText.length > 0 && (
+              <span className="text-white animate-pulse">|</span>
+            )}
+          </pre>
         </div>
       </div>
 
-      <div className="pt-4">
+      {/* Description Section */}
+      <div className="mt-4">
         <h3 className="text-xl font-semibold">Development & Test</h3>
         <p className="text-gray-400 text-sm mt-2">
-          We build tailored solutions and rigorously test them to ensure they’re rock-solid before release.
+          We craft tailored solutions for your goals and rigorously test them — with just the right amount of memes.
         </p>
       </div>
     </div>
   );
 }
+import { BarChart3, PieChart } from "lucide-react";
 
 function DiscoveryAnalysisProcess() {
   return (
-    <div className={cardWrapper}>
-      <div className="bg-[#1a1a1a] rounded-2xl p-4 flex-1 flex flex-col justify-between">
+    <div className={cardWrapper} style={{ height: "500px" }}>
+      <div className="bg-[#1a1a1a] rounded-2xl p-4 flex flex-col h-full">
+        {/* Window Controls */}
         <div className="flex space-x-2 mb-3">
           <div className="w-3 h-3 bg-red-500 rounded-full" />
           <div className="w-3 h-3 bg-yellow-500 rounded-full" />
           <div className="w-3 h-3 bg-green-500 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-4">
-            <div className="flex items-end justify-between space-x-1 h-16">
-              <div className="w-2 bg-gray-500 h-4 rounded-sm"></div>
-              <div className="w-2 bg-gray-500 h-6 rounded-sm"></div>
-              <div className="w-2 bg-indigo-500 h-12 rounded-sm animate-pulse"></div>
-              <div className="w-2 bg-gray-500 h-8 rounded-sm"></div>
+        {/* Main Content */}
+        <div className="grid grid-cols-2 gap-4 flex-1">
+          {/* Left Side */}
+          <div className="flex flex-col justify-between">
+            {/* Animated Bars */}
+            <div className="flex items-end justify-between h-28">
+              <div className="w-2 bg-gray-600 h-12 rounded-sm" />
+              <div className="w-2 bg-gray-600 h-6 rounded-sm" />
+              <div className="w-2 bg-indigo-500 h-18 rounded-sm animate-pulse" />
+              <div className="w-2 bg-gray-600 h-8 rounded-sm" />
+              <div className="w-2 bg-gray-600 h-4 rounded-sm" />
             </div>
 
-            <div className="space-y-1">
-              <div className="w-full h-1.5 bg-gray-600 rounded"></div>
-              <div className="w-full h-1.5 bg-gray-600 rounded"></div>
-              <div className="w-2/3 h-1.5 bg-gray-600 rounded"></div>
+            {/* Skeleton Line Chart */}
+            <div className="bg-gray-800 rounded-lg p-2 animate-pulse">
+              <div className="h-20 bg-gray-700 rounded" />
             </div>
           </div>
 
-          <div className="flex items-center justify-center">
-            <div className="relative">
-              <Target className="w-16 h-16 text-gray-400" />
-              <div className="absolute top-1 left-1 w-3 h-3 bg-indigo-500 rounded-full animate-ping" />
+          {/* Right Side */}
+          <div className="flex flex-col items-center justify-between">
+            {/* Target Icon */}
+            <div className="relative mb-4">
+              <Target className="w-26 h-26 text-gray-400" />
+              <div className="absolute top-11 left-12 w-3 h-3 bg-indigo-500 rounded-full animate-ping" />
+            </div>
+
+            {/* Skeleton Pie Chart */}
+            <div className="bg-gray-800 rounded-lg p-2 w-full animate-pulse">
+              <div className="h-20 bg-gray-700 rounded-full mx-auto" />
             </div>
           </div>
         </div>
 
-        <div className="bg-black/40 rounded-lg p-2 text-xs text-gray-400 mt-4">
-          <p>Last Insight: <span className="text-white">User churn rising</span></p>
-          <p>Key Focus: <span className="text-white">Product-Market Fit</span></p>
+        {/* Visual Focus / Insight Tags */}
+        <div className="flex justify-between gap-2 mt-3">
+          <div className="bg-indigo-600/20 text-indigo-300 rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1">
+            <BarChart3 className="w-3 h-3" /> Churn ↑
+          </div>
+          <div className="bg-green-600/20 text-green-300 rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1">
+            🎯 PM-Fit Focus
+          </div>
         </div>
       </div>
 
+      {/* Title & Description */}
       <div className="pt-4">
         <h3 className="text-xl font-semibold">Discovery & Analysis</h3>
         <p className="text-gray-400 text-sm mt-2">
