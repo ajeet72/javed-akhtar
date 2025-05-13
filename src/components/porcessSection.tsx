@@ -12,6 +12,7 @@ import {
   Zap,
   CheckCircle2,
   Target,
+  BarChart3,
 } from 'lucide-react';
 
 const codeSnippets = [
@@ -144,24 +145,32 @@ function LaunchMaintainProcess() {
     </div>
   );
 }
-
 export function DevelopmentTestProcess() {
   const [displayedText, setDisplayedText] = useState('');
   const [snippetIndex, setSnippetIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [charIndex, setCharIndex] = useState(0);
   const [highlightedHtml, setHighlightedHtml] = useState('');
+  const [isClient, setIsClient] = useState(false); 
 
   useEffect(() => {
+    setIsClient(true); 
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return; 
+
     const highlighted = Prism.highlight(
       displayedText,
       Prism.languages.typescript,
       'typescript'
     );
     setHighlightedHtml(highlighted);
-  }, [displayedText]);
+  }, [displayedText, isClient]);
 
   useEffect(() => {
+    if (!isClient) return; 
+
     const currentSnippet = codeSnippets[snippetIndex];
     let timer: NodeJS.Timeout;
 
@@ -183,32 +192,33 @@ export function DevelopmentTestProcess() {
     }
 
     return () => clearTimeout(timer);
-  }, [charIndex, isDeleting, snippetIndex]);
+  }, [charIndex, isDeleting, snippetIndex, isClient]);
 
   return (
     <div className="bg-black text-white p-6 rounded-3xl w-full shadow-lg flex flex-col justify-between min-h-[450px]">
-      {/* Code UI */}
       <div className="bg-[#1a1a1a] rounded-2xl px-4 pt-3 pb-5 font-mono text-sm leading-6 flex-grow flex flex-col">
-        {/* Browser-style dots */}
         <div className="flex space-x-2 mb-2">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
 
-        {/* Typing animation with proper wrapping */}
         <div className="flex-1 overflow-auto">
           <pre className="text-left whitespace-pre-wrap break-all">
-            <code 
-              className="language-typescript"
-              dangerouslySetInnerHTML={{ __html: highlightedHtml }}
-              style={{
-                display: 'inline-block',
-                wordBreak: 'break-word',
-                whiteSpace: 'pre-wrap'
-              }}
-            />
-            {displayedText.length > 0 && (
+            {isClient ? (
+              <code
+                className="language-typescript"
+                dangerouslySetInnerHTML={{ __html: highlightedHtml }}
+                style={{
+                  display: 'inline-block',
+                  wordBreak: 'break-word',
+                  whiteSpace: 'pre-wrap',
+                }}
+              />
+            ) : (
+              <code>Loading...</code>
+            )}
+            {isClient && displayedText.length > 0 && (
               <span className="text-white animate-pulse">|</span>
             )}
           </pre>
@@ -225,7 +235,6 @@ export function DevelopmentTestProcess() {
     </div>
   );
 }
-import { BarChart3, PieChart } from "lucide-react";
 
 function DiscoveryAnalysisProcess() {
   return (
