@@ -27,8 +27,12 @@
   filter: blur(40px);
 }
 
-
-
 .bg-radial-purple {
   background-image: radial-gradient(rgba(122, 95, 241, 0.5), black);
+}
+
+@layer base {
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
