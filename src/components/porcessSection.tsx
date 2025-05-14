@@ -14,6 +14,7 @@ import {
   Target,
   BarChart3,
 } from "lucide-react";
+import CenterButton from "./centerButton";
 
 const codeSnippets = [
   `function safelyAccessUser(user?: { name: string }): string {
@@ -79,6 +80,7 @@ const cardWrapper =
 export default function ProcessSection() {
   return (
     <section className="py-24 px-4 md:px-8">
+      <CenterButton name="Process"/>
       <div className="max-w-7xl mx-auto">
         {/* Section heading */}
         <div className="text-center mb-12">

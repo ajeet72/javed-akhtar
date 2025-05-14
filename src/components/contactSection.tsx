@@ -1,10 +1,13 @@
 "use client";
 
 import { Mail, MailIcon, Phone } from "lucide-react";
+import CenterButton from "./centerButton";
 
 export default function ContactForm() {
 
   return (
+    <>
+    <CenterButton name="Contact"/>
     <div className="min-h-fit text-white flex items-center justify-center px-8 py-16">
       <div className="max-w-6xl w-full flex flex-col md:flex-row md:space-x-12 space-y-12 md:space-y-0">
         {/* Left: Info Section */}
@@ -74,5 +77,6 @@ export default function ContactForm() {
         </form>
       </div>
     </div>
+    </>
   );
 }

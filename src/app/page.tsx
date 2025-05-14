@@ -1,3 +1,5 @@
+import BenefitsSection from "@/components/benefitsSection";
+import CenterButton from "@/components/centerButton";
 import ContactForm from "@/components/contactSection";
 import CursorGradient from "@/components/cursorGradient";
 import HeroSection from "@/components/hero";
@@ -14,9 +16,11 @@ export default function Home() {
       <div className="relative z-10 "> {/* Wrapped content in a div with higher z-index */}
         <Topbar/>
         <HeroSection/>
+        <BenefitsSection/>
         <ProcessSection/>
         <SkillsComponent/>
         <TestimonialsSection/>
+        <CenterButton name="Projects"/>
         <ProjectCard
           title="Example Project"
           description="A web app for visualizing personalized Spotify data. View your top artists,visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more."
