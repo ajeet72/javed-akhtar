@@ -32,7 +32,7 @@ export default function Home() {
           image="/project image.png"
           reverse={true}
           />
-          <ContactForm/>
+        <ContactForm/>
       </div>
     </main>
   );
