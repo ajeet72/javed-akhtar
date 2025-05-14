@@ -1,9 +1,9 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import Prism from 'prismjs';
-import 'prismjs/themes/prism-tomorrow.css';
-import 'prismjs/components/prism-typescript';
-import 'prismjs/components/prism-javascript';
+"use client";
+import React, { useEffect, useState } from "react";
+import Prism from "prismjs";
+import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-javascript";
 
 import {
   Gauge,
@@ -13,7 +13,7 @@ import {
   CheckCircle2,
   Target,
   BarChart3,
-} from 'lucide-react';
+} from "lucide-react";
 
 const codeSnippets = [
   `function safelyAccessUser(user?: { name: string }): string {
@@ -70,22 +70,24 @@ const codeSnippets = [
     console.log("✅ Safe to test!");
   }
 
-  testFeature();`
+  testFeature();`,
 ];
-
 
 const cardWrapper =
   "bg-black text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[28rem]";
 
 export default function ProcessSection() {
   return (
-    <section className="py-12 px-4 md:px-8">
+    <section className="py-24 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Section heading */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white">Our Development Process</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
+            Our Development Process
+          </h2>
           <p className="text-gray-400 mt-2 text-sm md:text-base max-w-2xl mx-auto">
-            A clear, tested, and professional path from discovery to deployment. We deliver robust software every step of the way.
+            A clear, tested, and professional path from discovery to deployment.
+            We deliver robust software every step of the way.
           </p>
         </div>
 
@@ -111,11 +113,32 @@ function LaunchMaintainProcess() {
         </div>
 
         <div className="flex flex-1 pt-2">
-          <div className="w-1/2 space-y-3">
-            {[{ icon: ShieldCheck, label: 'Security' }, { icon: Gauge, label: 'Efficiency', active: true }, { icon: Zap, label: 'Speed' }, { icon: CheckCircle2, label: 'Accuracy' }].map(({ icon: Icon, label, active }) => (
-              <div key={label} className={`flex items-center space-x-2 ${active ? 'bg-[#333] px-2 py-1 rounded-lg' : ''}`}>
-                <Icon className={`w-5 h-5 ${active ? 'text-white' : 'text-gray-400'}`} />
-                <span className={`text-sm ${active ? 'font-medium' : 'text-gray-400'}`}>{label}</span>
+          <div className="w-1/2 space-y-4">
+            {[
+              { icon: ShieldCheck, label: "Security" },
+              { icon: Gauge, label: "Efficiency", active: true },
+              { icon: Zap, label: "Speed" },
+              { icon: CheckCircle2, label: "Accuracy" },
+              { icon: Target, label: "Reliability" },
+            ].map(({ icon: Icon, label, active }) => (
+              <div
+                key={label}
+                className={`flex items-center space-x-2 ${
+                  active ? "bg-[#333] px-2 py-1 rounded-lg" : ""
+                }`}
+              >
+                <Icon
+                  className={`w-5 h-5 ${
+                    active ? "text-white" : "text-gray-400"
+                  }`}
+                />
+                <span
+                  className={`text-sm ${
+                    active ? "font-medium" : "text-gray-400"
+                  }`}
+                >
+                  {label}
+                </span>
               </div>
             ))}
           </div>
@@ -131,45 +154,51 @@ function LaunchMaintainProcess() {
         </div>
 
         <div className="bg-black/40 rounded-lg p-2 text-xs text-gray-400">
-          <p>Last Deployed: <span className="text-white">12 mins ago</span></p>
-          <p>Uptime: <span className="text-white">99.98%</span></p>
+          <p>
+            Last Deployed: <span className="text-white">12 mins ago</span>
+          </p>
+          <p>
+            Uptime: <span className="text-white">99.98%</span>
+          </p>
         </div>
       </div>
 
       <div className="pt-4">
         <h3 className="text-xl font-semibold">Launch & Maintain</h3>
         <p className="text-gray-400 text-sm mt-2">
-          We deploy your solution seamlessly and ensure continuous performance with proactive monitoring.
+          We deploy your solution seamlessly and ensure continuous performance
+          with proactive monitoring.
         </p>
       </div>
     </div>
   );
 }
+
 export function DevelopmentTestProcess() {
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedText, setDisplayedText] = useState("");
   const [snippetIndex, setSnippetIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [charIndex, setCharIndex] = useState(0);
-  const [highlightedHtml, setHighlightedHtml] = useState('');
-  const [isClient, setIsClient] = useState(false); 
+  const [highlightedHtml, setHighlightedHtml] = useState("");
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); 
+    setIsClient(true);
   }, []);
 
   useEffect(() => {
-    if (!isClient) return; 
+    if (!isClient) return;
 
     const highlighted = Prism.highlight(
       displayedText,
       Prism.languages.typescript,
-      'typescript'
+      "typescript"
     );
     setHighlightedHtml(highlighted);
   }, [displayedText, isClient]);
 
   useEffect(() => {
-    if (!isClient) return; 
+    if (!isClient) return;
 
     const currentSnippet = codeSnippets[snippetIndex];
     let timer: NodeJS.Timeout;
@@ -195,7 +224,7 @@ export function DevelopmentTestProcess() {
   }, [charIndex, isDeleting, snippetIndex, isClient]);
 
   return (
-    <div className="bg-black text-white p-6 rounded-3xl w-full shadow-lg flex flex-col justify-between min-h-[450px]">
+    <div className={cardWrapper}>
       <div className="bg-[#1a1a1a] rounded-2xl px-4 pt-3 pb-5 font-mono text-sm leading-6 flex-grow flex flex-col">
         <div className="flex space-x-2 mb-2">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
@@ -210,9 +239,9 @@ export function DevelopmentTestProcess() {
                 className="language-typescript"
                 dangerouslySetInnerHTML={{ __html: highlightedHtml }}
                 style={{
-                  display: 'inline-block',
-                  wordBreak: 'break-word',
-                  whiteSpace: 'pre-wrap',
+                  display: "inline-block",
+                  wordBreak: "break-word",
+                  whiteSpace: "pre-wrap",
                 }}
               />
             ) : (
@@ -229,7 +258,8 @@ export function DevelopmentTestProcess() {
       <div className="mt-4">
         <h3 className="text-xl font-semibold">Development & Test</h3>
         <p className="text-gray-400 text-sm mt-2">
-          We craft tailored solutions for your goals and rigorously test them — with just the right amount of memes.
+          We craft tailored solutions for your goals and rigorously test them —
+          with just the right amount of memes.
         </p>
       </div>
     </div>
@@ -238,7 +268,7 @@ export function DevelopmentTestProcess() {
 
 function DiscoveryAnalysisProcess() {
   return (
-    <div className={cardWrapper} style={{ height: "500px" }}>
+    <div className={cardWrapper}>
       <div className="bg-[#1a1a1a] rounded-2xl p-4 flex flex-col h-full">
         {/* Window Controls */}
         <div className="flex space-x-2 mb-3">
@@ -250,33 +280,46 @@ function DiscoveryAnalysisProcess() {
         {/* Main Content */}
         <div className="grid grid-cols-2 gap-4 flex-1">
           {/* Left Side */}
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col gap-11">
             {/* Animated Bars */}
             <div className="flex items-end justify-between h-28">
-              <div className="w-2 bg-gray-600 h-12 rounded-sm" />
               <div className="w-2 bg-gray-600 h-6 rounded-sm" />
-              <div className="w-2 bg-indigo-500 h-18 rounded-sm animate-pulse" />
               <div className="w-2 bg-gray-600 h-8 rounded-sm" />
               <div className="w-2 bg-gray-600 h-4 rounded-sm" />
+              <div className="w-2 bg-gray-600 h-4 rounded-sm" />
+              <div className="w-2 bg-gray-600 h-12 rounded-sm" />
+              <div className="w-2 bg-gray-600 h-4 rounded-sm" />
+              <div className="w-2 bg-indigo-500 h-18 rounded-sm animate-pulse" />
             </div>
 
-            {/* Skeleton Line Chart */}
             <div className="bg-gray-800 rounded-lg p-2 animate-pulse">
-              <div className="h-20 bg-gray-700 rounded" />
+              {/* Skeleton Text Lines */}
+              <div className="space-y-2">
+                <div className="h-2 bg-gray-700 rounded w-3/4"></div>
+                <div className="h-3 bg-gray-700 rounded w-5/6"></div>
+                <div className="h-2 bg-gray-700 rounded w-2/3"></div>
+                <div className="h-2 bg-gray-700 rounded w-5/6"></div>
+                <div className="h-2 bg-gray-700 rounded w-3/6"></div>
+              </div>
             </div>
           </div>
 
           {/* Right Side */}
-          <div className="flex flex-col items-center justify-between">
-            {/* Target Icon */}
-            <div className="relative mb-4">
+          <div className="flex flex-col gap-11 justify-center">
+            {/* Animated Bars */}
+            <div className="relative ml-5">
               <Target className="w-26 h-26 text-gray-400" />
               <div className="absolute top-11 left-12 w-3 h-3 bg-indigo-500 rounded-full animate-ping" />
             </div>
 
-            {/* Skeleton Pie Chart */}
-            <div className="bg-gray-800 rounded-lg p-2 w-full animate-pulse">
-              <div className="h-20 bg-gray-700 rounded-full mx-auto" />
+            <div className="bg-gray-800 rounded-lg p-2 animate-pulse">
+              <div className="space-y-2">
+                <div className="h-2 bg-gray-700 rounded w-5/6"></div>
+                <div className="h-2 bg-gray-700 rounded w-2/3"></div>
+                <div className="h-2 bg-gray-700 rounded w-3/4"></div>
+                <div className="h-2 bg-gray-700 rounded w-3/6"></div>
+                <div className="h-3 bg-gray-700 rounded w-5/6"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -296,7 +339,8 @@ function DiscoveryAnalysisProcess() {
       <div className="pt-4">
         <h3 className="text-xl font-semibold">Discovery & Analysis</h3>
         <p className="text-gray-400 text-sm mt-2">
-          We explore your product landscape and uncover actionable strategies to guide long-term direction.
+          We explore your product landscape and uncover actionable strategies to
+          guide long-term direction.
         </p>
       </div>
     </div>
