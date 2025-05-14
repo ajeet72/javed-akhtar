@@ -5,11 +5,11 @@ export default function SkillsComponent() {
   return (
     <div className="flex flex-col items-center justify-center min-h-fit text-center">
       <div className="mb-6">
-        <h1 className="text-white text-xl md:text-2xl lg:text-3xl font-medium">
+        <h1 className="text-white text-3xl md:text-4xl font-bold">
           I'm currently looking to join a{" "}
           <span className="text-[#A88BFE]">cross-functional</span> team
         </h1>
-        <p className="text-gray-300 text-sm md:text-base mt-2">
+        <p className="text-gray-400 text-base md:text-lg mt-4 max-w-2xl mx-auto">
           that values improving people's lives through accessible design
         </p>
       </div>

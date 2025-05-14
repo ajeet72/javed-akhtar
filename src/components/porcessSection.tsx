@@ -288,7 +288,7 @@ function DiscoveryAnalysisProcess() {
               <div className="w-2 bg-gray-600 h-4 rounded-sm" />
               <div className="w-2 bg-gray-600 h-4 rounded-sm" />
               <div className="w-2 bg-gray-600 h-12 rounded-sm" />
-              <div className="w-2 bg-gray-600 h-4 rounded-sm" />
+              <div className="w-2 bg-gray-600 h-6 rounded-sm" />
               <div className="w-2 bg-indigo-500 h-18 rounded-sm animate-pulse" />
             </div>
 
