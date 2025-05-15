@@ -15,14 +15,14 @@ export default function HeroSection({ id }: { id: string }) {
   }, []);
 
   return (
-    <div id={id} className="min-h-fit mclaren-font text-white flex flex-col items-center justify-center py-14 pt-36 text-center px-4 sm:px-6 lg:px-8">
+    <div id={id} className="min-h-fit mclaren-font text-white flex flex-col items-center justify-center py-14 pt-44 text-center px-4 sm:px-6 lg:px-8">
       {/* Avatar + Tagline */}
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-24 items-center">
         <div className="relative mb-8 avatar-glow">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
             <img
               src="/Arrow.png"
@@ -32,11 +32,18 @@ export default function HeroSection({ id }: { id: string }) {
           </motion.div>
 
           <div className="flex justify-center">
-            <motion.img src="/avatar.png" alt="Avatar" className="" />
+            <motion.img
+              src="/avatar.png"
+              alt="Avatar"
+              className=""
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 100, damping: 10 }}
+            />
           </div>
 
           <motion.div
-            className="absolute -top-14 lg:left-80 left-1/2  transform -translate-x-1/2 text-base sm:text-lg md:text-xl font-bold text-gray-300 whitespace-nowrap"
+            className="absolute -top-14 lg:left-80 left-1/2 transform -translate-x-1/2 text-base sm:text-lg md:text-xl font-bold text-gray-300 whitespace-nowrap"
             animate={{
               y: [0, -10, 0], // smooth vertical bounce
             }}
@@ -56,7 +63,7 @@ export default function HeroSection({ id }: { id: string }) {
           className="text-2xl sm:text-3xl text-center lg:text-left font-semibold leading-snug mb-2 pt-10"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
         >
           A Developer who <br />
           <span className="text-4xl sm:text-5xl font-bold">
@@ -79,7 +86,7 @@ export default function HeroSection({ id }: { id: string }) {
             className="text-sm mb-8 pt-5 text-gray-300"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
           >
             Because if the cover does not impress you, what else can?
           </motion.p>
@@ -91,7 +98,7 @@ export default function HeroSection({ id }: { id: string }) {
         className="text-center lg:text-left w-full max-w-4xl px-10 pt-16"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.8 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
       >
         <h1 className="text-3xl sm:text-4xl font-bold mb-2">
           I'm a{" "}
@@ -135,7 +142,7 @@ export default function HeroSection({ id }: { id: string }) {
           className="max-w-2xl text-lg sm:text-xl text-gray-300 py-4 mx-auto lg:mx-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
         >
           A self-taught UI/UX designer, functioning in the industry for 1+ years
           now. I make meaningful and delightful digital products that create an

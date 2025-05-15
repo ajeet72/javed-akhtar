@@ -2,9 +2,10 @@ import { ArrowRight } from "lucide-react";
 
 export default function AnimatedButton({ text }: { text: string }) {
   return (
-    <div className="relative inline-block overflow-hidden rounded-xl">
+    <div className="inline-block overflow-hidden rounded-xl">
       <a
-        href="cal.com"
+        target="_blank"
+        href="https://cal.com/ajeet-sharma.dev"
         className="group bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 text-sm font-medium shadow-lg transition-all duration-200 relative inline-block"
       >
         <div className="overflow-hidden">

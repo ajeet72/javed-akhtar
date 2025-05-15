@@ -25,7 +25,7 @@ const benefits = [
 
 export default function BenefitsSection({ id }: { id: string }) {
   return (
-    <section id="benefits" className="text-white py-20 px-4">
+    <section id="benefits" className="text-white pt-20 px-4">
       <CenterButton name='Benefits'/>
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-4">Maximize efficiency and impact</h2>
