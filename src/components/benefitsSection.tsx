@@ -23,7 +23,7 @@ const benefits = [
   },
 ];
 
-export default function BenefitsSection() {
+export default function BenefitsSection({ id }: { id: string }) {
   return (
     <section id="benefits" className="text-white py-20 px-4">
       <CenterButton name='Benefits'/>

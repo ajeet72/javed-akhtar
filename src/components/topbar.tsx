@@ -1,30 +1,38 @@
 "use client";
 
-import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import { usePathname } from 'next/navigation';
 
 export default function TopBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
-  const linksRef = useRef<(HTMLAnchorElement | null)[]>([]);
+  const linksRef = useRef<(HTMLButtonElement | null)[]>([]);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const mobileLinksRef = useRef<(HTMLAnchorElement | null)[]>([]);
+  const mobileLinksRef = useRef<(HTMLButtonElement | null)[]>([]);
 
   // Store mobile link refs
-  const addToMobileRefs = (el: HTMLAnchorElement | null) => {
+  const addToMobileRefs = (el: HTMLButtonElement | null) => {
     if (el && !mobileLinksRef.current.includes(el)) {
       mobileLinksRef.current.push(el);
     }
   };
 
+  // Store desktop link refs
+  const addToRefs = (el: HTMLButtonElement | null) => {
+    if (el && !linksRef.current.includes(el)) {
+      linksRef.current.push(el);
+    }
+  };
+
   useEffect(() => {
     // Filter out null values
-    const validLinks = linksRef.current.filter(Boolean) as HTMLAnchorElement[];
-    const validMobileLinks = mobileLinksRef.current.filter(Boolean) as HTMLAnchorElement[];
+    const validLinks = linksRef.current.filter(Boolean) as HTMLButtonElement[];
+    const validMobileLinks = mobileLinksRef.current.filter(Boolean) as HTMLButtonElement[];
 
     // Initial hidden state
     gsap.set([logoRef.current, ...validLinks], { opacity: 0, y: -20 });
@@ -76,7 +84,7 @@ export default function TopBar() {
   useEffect(() => {
     // Mobile menu animation when toggled
     if (mobileMenuRef.current) {
-      const validMobileLinks = mobileLinksRef.current.filter(Boolean) as HTMLAnchorElement[];
+      const validMobileLinks = mobileLinksRef.current.filter(Boolean) as HTMLButtonElement[];
       
       if (isMenuOpen) {
         // Open animation
@@ -109,9 +117,23 @@ export default function TopBar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const addToRefs = (el: HTMLAnchorElement | null) => {
-    if (el && !linksRef.current.includes(el)) {
-      linksRef.current.push(el);
+  const scrollToSection = (sectionId: string) => {
+    if (pathname !== '/') {
+      // If we're not on the home page, navigate to home first with hash
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+
+    const section = document.getElementById(sectionId);
+    if (section) {
+      setIsMenuOpen(false); // Close mobile menu if open
+      window.scrollTo({
+        top: section.offsetTop - 100, // Adjust offset as needed
+        behavior: 'smooth'
+      });
+      
+      // Update URL without page reload
+      window.history.pushState(null, '', `#${sectionId}`);
     }
   };
 
@@ -120,8 +142,10 @@ export default function TopBar() {
       ref={headerRef}
       className="fixed bg-[#1A0B2E] text-white py-4 px-4 sm:px-8 flex items-center justify-between md:justify-around top-0 left-0 right-0 z-50"
     >
+      {/* Logo */}
       <div 
         ref={logoRef}
+        onClick={() => scrollToSection('home')}
         className="text-2xl font-bold cursor-pointer hover:scale-110 transition-transform duration-300"
       >
         <img src="/logo.png" alt="Logo" className='h-6' />
@@ -132,34 +156,41 @@ export default function TopBar() {
         ref={navRef} 
         className="hidden md:flex space-x-8 lg:space-x-16 xl:space-x-24 font-semibold text-sm"
       >
-        <Link 
-          href="/" 
+        <button 
+          onClick={() => scrollToSection('home')}
           ref={addToRefs}
           className="hover:text-slate-400 transition-colors duration-300 transform hover:scale-105"
         >
           Home
-        </Link>
-        <Link 
-          href="/about" 
+        </button>
+        <button 
+          onClick={() => scrollToSection('about')}
           ref={addToRefs}
           className="hover:text-slate-400 transition-colors duration-300 transform hover:scale-105"
         >
           About
-        </Link>
-        <Link 
-          href="/lab" 
+        </button>
+        <button 
+          onClick={() => scrollToSection('process')}
+          ref={addToRefs}
+          className="hover:text-slate-400 transition-colors duration-300 transform hover:scale-105"
+        >
+          Process
+        </button>
+        <button 
+          onClick={() => scrollToSection('projects')}
           ref={addToRefs}
           className="hover:text-slate-400 transition-colors duration-300 transform hover:scale-105"
         >
           Projects
-        </Link>
-        <Link 
-          href="/lab" 
+        </button>
+        <button 
+          onClick={() => scrollToSection('contact')}
           ref={addToRefs}
           className="hover:text-slate-400 transition-colors duration-300 transform hover:scale-105"
         >
           Contact
-        </Link>
+        </button>
       </nav>
 
       {/* Mobile Menu Button */}
@@ -168,6 +199,7 @@ export default function TopBar() {
         onClick={toggleMenu}
         className="md:hidden text-white focus:outline-none"
         aria-label="Toggle menu"
+        aria-expanded={isMenuOpen}
       >
         <svg
           className="w-6 h-6"
@@ -201,38 +233,41 @@ export default function TopBar() {
         style={{ height: 0 }}
       >
         <div className="py-4 px-8 flex flex-col space-y-4 items-center">
-          <Link 
-            href="/" 
+          <button 
+            onClick={() => scrollToSection('home')}
             ref={addToMobileRefs}
             className="hover:text-slate-400 transition-colors duration-300 w-full text-center py-2"
-            onClick={() => setIsMenuOpen(false)}
           >
             Home
-          </Link>
-          <Link 
-            href="/about" 
+          </button>
+          <button 
+            onClick={() => scrollToSection('about')}
             ref={addToMobileRefs}
             className="hover:text-slate-400 transition-colors duration-300 w-full text-center py-2"
-            onClick={() => setIsMenuOpen(false)}
           >
             About
-          </Link>
-          <Link 
-            href="/lab" 
+          </button>
+          <button 
+            onClick={() => scrollToSection('process')}
             ref={addToMobileRefs}
             className="hover:text-slate-400 transition-colors duration-300 w-full text-center py-2"
-            onClick={() => setIsMenuOpen(false)}
+          >
+            Process
+          </button>
+          <button 
+            onClick={() => scrollToSection('projects')}
+            ref={addToMobileRefs}
+            className="hover:text-slate-400 transition-colors duration-300 w-full text-center py-2"
           >
             Projects
-          </Link>
-          <Link 
-            href="/lab" 
+          </button>
+          <button 
+            onClick={() => scrollToSection('contact')}
             ref={addToMobileRefs}
             className="hover:text-slate-400 transition-colors duration-300 w-full text-center py-2"
-            onClick={() => setIsMenuOpen(false)}
           >
             Contact
-          </Link>
+          </button>
         </div>
       </div>
     </header>

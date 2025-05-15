@@ -6,35 +6,25 @@ import CursorGradient from "@/components/cursorGradient";
 import HeroSection from "@/components/hero";
 import ProcessSection from "@/components/porcessSection";
 import ProjectCard from "@/components/projectCard";
+import ProjectsSection from "@/components/projectsSection";
 import TestimonialsSection from "@/components/section";
 import SkillsComponent from "@/components/skillsSection";
 import Topbar from "@/components/topbar";
 
 export default function Home() {
   return (
-    <main className="relative"> {/* Added relative to establish stacking context */}
+    <main className="relative">
       <CursorGradient />
-      <div className="relative z-10 "> {/* Wrapped content in a div with higher z-index */}
+      <div className="relative z-10">
         <Topbar/>
-        <HeroSection/>
-        <BenefitsSection/>
-        <ProcessSection/>
-        <SkillsComponent/>
-        <TestimonialsSection/>
-        <CenterButton name="Projects"/>
-        <ProjectCard
-          title="Example Project"
-          description="A web app for visualizing personalized Spotify data. View your top artists,visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more."
-          image="/project image.png"
-          />
-        <ProjectCard
-          title="Example Project"
-          description="A web app for visualizing personalized Spotify data. View your top artists,visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more."
-          image="/project image.png"
-          reverse={true}
-          />
-        <ContactForm/>
-        <CallToAction/>
+        <HeroSection id="home"/>
+        <ProjectsSection id="projects"/>
+        <BenefitsSection id="benefits"/>
+        <ProcessSection id="process"/>
+        <SkillsComponent id="skills"/>
+        <TestimonialsSection id="testimonials"/>
+        <ContactForm id="contact"/>
+        <CallToAction id="cta"/>
       </div>
     </main>
   );

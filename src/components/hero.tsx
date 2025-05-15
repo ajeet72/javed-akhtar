@@ -3,10 +3,9 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export default function HeroSection() {
+export default function HeroSection({ id }: { id: string }) {
   const [isVisible, setIsVisible] = useState(true);
 
-  // Animation for the "Hello! I am Ajeet Sharma" text
   useEffect(() => {
     const interval = setInterval(() => {
       setIsVisible((prev) => !prev);
@@ -16,7 +15,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <div className="min-h-fit mclaren-font text-white flex flex-col items-center justify-center py-14 pt-36 text-center px-4 sm:px-6 lg:px-8">
+    <div id={id} className="min-h-fit mclaren-font text-white flex flex-col items-center justify-center py-14 pt-36 text-center px-4 sm:px-6 lg:px-8">
       {/* Avatar + Tagline */}
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-24 items-center">
         <div className="relative mb-8 avatar-glow">

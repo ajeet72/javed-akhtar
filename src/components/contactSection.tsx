@@ -5,7 +5,7 @@ import CenterButton from "./centerButton";
 import { useState } from "react";
 import { motion } from "framer-motion"; // Import Framer Motion
 
-export default function ContactForm() {
+export default function ContactForm({ id }: { id: string }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
@@ -68,7 +68,7 @@ export default function ContactForm() {
   };
 
   return (
-    <>
+    <div id={id} >
       <div className="min-h-fit text-white flex items-center justify-center px-8 py-16">
         <motion.div
           className="max-w-6xl w-full flex flex-col md:flex-row md:space-x-12 space-y-12 md:space-y-0"
@@ -189,6 +189,6 @@ export default function ContactForm() {
           </motion.form>
         </motion.div>
       </div>
-    </>
+    </div>
   );
 }

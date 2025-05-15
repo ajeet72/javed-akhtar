@@ -77,9 +77,9 @@ const codeSnippets = [
 const cardWrapper =
   "bg-black text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[28rem]";
 
-export default function ProcessSection() {
+export default function ProcessSection({ id }: { id: string }) {
   return (
-    <section className="py-24 px-4 md:px-8">
+    <section id={id} className="py-24 px-4 md:px-8">
       <CenterButton name="Process"/>
       <div className="max-w-7xl mx-auto">
         {/* Section heading */}
