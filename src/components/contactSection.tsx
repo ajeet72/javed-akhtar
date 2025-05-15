@@ -49,36 +49,22 @@ export default function ContactForm() {
     }
   };
 
-  // Animation variants
-  const slideInFromLeft = {
-    hidden: { opacity: 0, x: -100 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
-    },
-  };
-
-  const slideInFromRight = {
-    hidden: { opacity: 0, x: 100 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.8, ease: "easeOut", delay: 0.4 },
-    },
-  };
-
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.9,
         ease: "easeOut",
-        delay: 0.4,
+        delay: 0.8,
       },
     },
+  };
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
@@ -89,11 +75,14 @@ export default function ContactForm() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.8 }}
+          variants={fadeInUp}
         >
           {/* Left: Info Section */}
           <motion.div
             className="w-full md:w-1/2 px-4 lg:px-0"
-            variants={slideInFromLeft}
+            variants={fadeInUp}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Ask whatever you have <br /> in your mind
@@ -142,7 +131,8 @@ export default function ContactForm() {
           <motion.form
             className="w-full md:w-1/2 bg-[#111111] p-6 sm:p-8 rounded-xl shadow-md space-y-6"
             onSubmit={handleSubmit}
-            variants={slideInFromRight}
+            variants={fadeInUp}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
           >
             <div>
               <label className="block mb-1 text-sm text-gray-300">Name</label>

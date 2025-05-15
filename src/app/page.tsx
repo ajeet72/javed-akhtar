@@ -1,4 +1,5 @@
 import BenefitsSection from "@/components/benefitsSection";
+import CallToAction from "@/components/callToAction";
 import CenterButton from "@/components/centerButton";
 import ContactForm from "@/components/contactSection";
 import CursorGradient from "@/components/cursorGradient";
@@ -33,6 +34,7 @@ export default function Home() {
           reverse={true}
           />
         <ContactForm/>
+        <CallToAction/>
       </div>
     </main>
   );
