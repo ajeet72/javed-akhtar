@@ -2,7 +2,40 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import AnimatedButton from "./animatedButton";
+
+// Animation variants
+const menuVariants = {
+  open: {
+    opacity: 1,
+    height: "auto",
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+      when: "beforeChildren",
+    },
+  },
+  closed: {
+    opacity: 0,
+    height: 0,
+    transition: {
+      staggerChildren: 0.05,
+      staggerDirection: -1,
+      when: "afterChildren",
+    },
+  },
+};
+
+const menuItemVariants = {
+  open: { opacity: 1, y: 0 },
+  closed: { opacity: 0, y: -20 },
+};
+
+const navItemVariants = {
+  hover: { scale: 1.05, backgroundColor: "rgba(30, 41, 59, 0.5)" },
+  tap: { scale: 0.95 },
+};
 
 export default function TopBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,44 +73,60 @@ export default function TopBar() {
   };
 
   return (
-    <header
+    <motion.header
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 text-white mx-6 mt-3 md:mx-10 md:mt-4 transition-all duration-300
-    rounded-xl border border-slate-800  backdrop-blur-md
-    ${isScrolled ? "md:!mx-auto md:!w-fit md:!px-4" : "md:mx-68"}
-  `}
+        rounded-xl border border-slate-800 backdrop-blur-md
+        ${isScrolled ? "md:!mx-auto md:!w-fit md:!px-4" : "md:mx-68"}
+      `}
     >
-      {/* Main Container - Always justify-between on mobile */}
-      <div className="flex items-center justify-between px-6 md:py-1 py-2">
-        {/* Logo - Always on left */}
-        <div
+      {/* Main Container */}
+      <motion.div
+        layout
+        className={`flex items-center justify-between ${isScrolled ? "px-2" : "px-6"} md:py-1 py-2`}
+      >
+        {/* Logo */}
+        <motion.div
           onClick={() => scrollToSection("home")}
-          className="cursor-pointer hover:scale-105 transition-transform duration-300"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="cursor-pointer"
         >
           <img src="/logo.png" alt="Logo" className="h-6" />
-        </div>
+        </motion.div>
 
-        {/* Desktop Navigation - Hidden on mobile */}
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-2 text-sm font-medium px-4">
           {["home", "about", "process", "projects", "contact"].map((id) => (
-            <button
+            <motion.button
               key={id}
               onClick={() => scrollToSection(id)}
-              className="px-3 py-1 rounded-md hover:bg-slate-800 transition-colors duration-200"
+              variants={navItemVariants}
+              whileHover="hover"
+              whileTap="tap"
+              className="px-3 py-1 rounded-md"
             >
               {id.charAt(0).toUpperCase() + id.slice(1)}
-            </button>
+            </motion.button>
           ))}
         </nav>
 
-        {/* Desktop CTA - Hidden on mobile */}
-        <div className="hidden pt-1 md:block">
+        {/* Desktop CTA */}
+        <motion.div 
+          className="hidden pt-1 md:block"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           <AnimatedButton text="Book a call" />
-        </div>
+        </motion.div>
 
-        {/* Mobile Menu Button - Only shown on mobile */}
-        <button
+        {/* Mobile Menu Button */}
+        <motion.button
           onClick={toggleMenu}
-          className="md:hidden p-1 rounded-md hover:bg-slate-800 transition-colors"
+          className="md:hidden p-1 rounded-md"
+          whileHover={{ backgroundColor: "rgba(30, 41, 59, 0.5)" }}
           aria-label="Toggle menu"
         >
           <svg
@@ -86,42 +135,51 @@ export default function TopBar() {
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
-            {isMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
+            <motion.path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+              initial={false}
+              animate={{ rotate: isMenuOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            />
           </svg>
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
 
       {/* Mobile Menu Dropdown */}
-      {isMenuOpen && (
-        <div className="md:hidden border-t border-slate-800 mt-2 pt-4 pb-6 px-4 space-y-3">
-          {["home", "about", "process", "projects", "contact"].map((id) => (
-            <button
-              key={id}
-              onClick={() => scrollToSection(id)}
-              className="block w-full text-left px-3 py-2 rounded-md hover:bg-slate-800 transition-colors"
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={menuVariants}
+            className="md:hidden border-t border-slate-800 mt-2 pt-4 pb-6 px-4 space-y-3"
+          >
+            {["home", "about", "process", "projects", "contact"].map((id) => (
+              <motion.button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                variants={menuItemVariants}
+                className="block w-full text-left px-3 py-2 rounded-md hover:bg-slate-800"
+              >
+                {id.charAt(0).toUpperCase() + id.slice(1)}
+              </motion.button>
+            ))}
+            <motion.div
+              variants={menuItemVariants}
+              className="pt-2"
             >
-              {id.charAt(0).toUpperCase() + id.slice(1)}
-            </button>
-          ))}
-          <div className="pt-2">
-            <AnimatedButton text="Book a call" />
-          </div>
-        </div>
-      )}
-    </header>
+              <AnimatedButton text="Book a call" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }
+
+
+// this si good 

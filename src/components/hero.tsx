@@ -15,7 +15,10 @@ export default function HeroSection({ id }: { id: string }) {
   }, []);
 
   return (
-    <div id={id} className="min-h-fit mclaren-font text-white flex flex-col items-center justify-center py-14 pt-44 text-center px-4 sm:px-6 lg:px-8">
+    <div
+      id={id}
+      className="min-h-fit mclaren-font text-white flex flex-col items-center justify-center py-14 pt-44 text-center px-4 sm:px-6 lg:px-8"
+    >
       {/* Avatar + Tagline */}
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-24 items-center">
         <div className="relative mb-8 avatar-glow">
@@ -27,23 +30,32 @@ export default function HeroSection({ id }: { id: string }) {
             <img
               src="/Arrow.png"
               alt="arrow"
-              className="hidden lg:block absolute -top-20 left-36 transform -translate-x-1/2"
+              className="hidden lg:block absolute -top-20 left-48 transform -translate-x-1/2"
             />
           </motion.div>
 
-          <div className="flex justify-center">
+          <div className="flex justify-center relative border-4 w-70 h-70 rounded-full">
+            {/* Background Image - slightly bigger */}
+            <img
+              src="/backgroundajeet.png"
+              alt="Background"
+              className="absolute inset-0 w-full h-full object-cover rounded-full shadow-lg scale-100"
+              style={{ zIndex: 1 }}
+            />
+            {/* Foreground (Avatar) Image with animation */}
             <motion.img
-              src="/avatar.png"
-              alt="Avatar"
-              className=""
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 100, damping: 10 }}
+              src="/ajeet.png"
+              alt="Ajeet Sharma"
+              className="rounded-full"
+              initial={{ y: 80, opacity: 0, scale: 0.9 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              transition={{ type: "spring", stiffness: 80, damping: 25}}
+              style={{ zIndex: 2 }}
             />
           </div>
 
           <motion.div
-            className="absolute -top-14 lg:left-80 left-1/2 transform -translate-x-1/2 text-base sm:text-lg md:text-xl font-bold text-gray-300 whitespace-nowrap"
+            className="absolute -top-14 lg:left-90 left-1/2 transform -translate-x-1/2 text-base sm:text-lg md:text-xl font-bold text-gray-300 whitespace-nowrap"
             animate={{
               y: [0, -10, 0], // smooth vertical bounce
             }}
