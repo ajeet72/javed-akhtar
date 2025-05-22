@@ -180,6 +180,3 @@ export default function TopBar() {
     </motion.header>
   );
 }
-
-
-// this si good 

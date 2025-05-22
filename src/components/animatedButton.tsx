@@ -8,7 +8,7 @@ export default function AnimatedButton({ text }: { text: string }) {
         href="https://cal.com/ajeet-sharma.dev"
         className="group bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 text-sm font-medium shadow-lg transition-all duration-200 relative inline-block"
       >
-        <div className="overflow-hidden">
+        <div className="overflow-hidden text-nowrap">
           <span className=" pt-1 flex relative transition-transform duration-600 group-hover:-translate-y-full">
             {text}
             <span className="pl-1 transform rotate-320">

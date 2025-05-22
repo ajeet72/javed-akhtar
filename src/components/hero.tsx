@@ -33,27 +33,27 @@ export default function HeroSection({ id }: { id: string }) {
               className="hidden lg:block absolute -top-20 left-48 transform -translate-x-1/2"
             />
           </motion.div>
-
-          <div className="flex justify-center relative border-4 w-70 h-70 rounded-full">
-            {/* Background Image - slightly bigger */}
+          <div className="flex justify-center relative w-70 h-70">
             <img
               src="/backgroundajeet.png"
               alt="Background"
               className="absolute inset-0 w-full h-full object-cover rounded-full shadow-lg scale-100"
               style={{ zIndex: 1 }}
             />
-            {/* Foreground (Avatar) Image with animation */}
             <motion.img
               src="/ajeet.png"
               alt="Ajeet Sharma"
-              className="rounded-full"
+              className="rounded-full absolute inset-0 w-full h-full"
               initial={{ y: 80, opacity: 0, scale: 0.9 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
-              transition={{ type: "spring", stiffness: 80, damping: 25}}
+              transition={{ type: "spring", stiffness: 80, damping: 25 }}
               style={{ zIndex: 2 }}
             />
+            <div
+              className="absolute inset-0 w-full h-full rounded-full border-4 pointer-events-none"
+              style={{ zIndex: 3 }}
+            />
           </div>
-
           <motion.div
             className="absolute -top-14 lg:left-90 left-1/2 transform -translate-x-1/2 text-base sm:text-lg md:text-xl font-bold text-gray-300 whitespace-nowrap"
             animate={{
