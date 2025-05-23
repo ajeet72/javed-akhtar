@@ -4,6 +4,7 @@ import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-javascript";
+import { motion } from 'framer-motion';
 
 import {
   Gauge,
@@ -15,6 +16,7 @@ import {
   BarChart3,
 } from "lucide-react";
 import CenterButton from "./centerButton";
+import { cardVariants } from "@/utils/motionConfig";
 
 const codeSnippets = [
   `function safelyAccessUser(user?: { name: string }): string {
@@ -75,12 +77,33 @@ const codeSnippets = [
 ];
 
 const cardWrapper =
-  "bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] hover:scale-[1.017] transition duration-300 text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[28rem]";
+    "bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] hover:scale-[1.017] transition duration-300 text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[350px] md:min-h-[500px]";
+
+const fadeInVariant = (direction: 'left' | 'right' | 'up') => {
+  const variants = {
+    hidden: {
+      opacity: 0,
+      x: direction === 'left' ? -100 : direction === 'right' ? 100 : 0,
+      y: direction === 'up' ? 100 : 0,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        type: 'spring',
+        duration: 2.8,
+        ease: 'easeInOut',
+      },
+    },
+  };
+  return variants;
+};
 
 export default function ProcessSection({ id }: { id: string }) {
   return (
-    <section id={id} className="px-6 md:px-8">
-      <CenterButton name="Process"/>
+    <section id={id} className="overflow-x-hidden px-6 sm:px-4 md:px-8">
+      <CenterButton name="Process" />
       <div className="max-w-7xl mx-auto">
         {/* Section heading */}
         <div className="text-center mb-12">
@@ -93,16 +116,33 @@ export default function ProcessSection({ id }: { id: string }) {
           </p>
         </div>
 
-        {/* Responsive grid of process cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <DiscoveryAnalysisProcess />
-          <DevelopmentTestProcess />
-          <LaunchMaintainProcess />
-        </div>
+        {/* Animated grid of process cards */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.2 },
+            },
+          }}
+        >
+          <motion.div custom="left" variants={cardVariants}>
+            <DiscoveryAnalysisProcess />
+          </motion.div>
+          <motion.div custom="bottom" variants={cardVariants}>
+            <DevelopmentTestProcess />
+          </motion.div>
+          <motion.div custom="right" variants={cardVariants}>
+            <LaunchMaintainProcess />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
 }
+
 
 
 function LaunchMaintainProcess() {
