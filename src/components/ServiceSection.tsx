@@ -17,12 +17,14 @@ import {
   ShieldCheck,
   Zap,
 } from "lucide-react";
+import CenterButton from "./centerButton";
 
 
 
 export function ServiceSection() {
   return (
     <div>
+      <CenterButton name="Services"/>
       <FeatureCards/>
       <AIDashboard/>
     </div>

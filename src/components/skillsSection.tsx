@@ -1,9 +1,11 @@
 "use client";
 import Image from "next/image";
+import CenterButton from "./centerButton";
 
 export default function SkillsComponent({ id }: { id: string }) {
   return (
     <div id={id} className="flex flex-col items-center justify-center min-h-fit text-center">
+      <CenterButton name="Skills" />
       <div>
         <h1 className="text-white text-3xl md:text-4xl font-bold">
           I'm currently looking to join a{" "}
