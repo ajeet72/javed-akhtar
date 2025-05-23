@@ -34,28 +34,28 @@ export default function HeroSection({ id }: { id: string }) {
             />
           </motion.div>
           <div className="flex justify-center relative w-70 h-70">
-  <div className="w-full h-full rounded-full overflow-hidden relative">
-    <img
-      src="/backgroundajeet.png"
-      alt="Background"
-      className="w-full h-full rounded-full"
-      style={{ zIndex: 1 }}
-    />
-    <motion.img
-      src="/ajeet.png"
-      alt="Ajeet Sharma"
-      className="rounded-full absolute inset-0 w-full h-full"
-      initial={{ y: 80, opacity: 0, scale: 0.9 }}
-      animate={{ y: 0, opacity: 1, scale: 1 }}
-      transition={{ type: "spring", stiffness: 80, damping: 25 }}
-      style={{ zIndex: 2 }}
-    />
-  </div>
-  <div
-    className="absolute inset-0 w-full h-full rounded-full border-4 pointer-events-none"
-    style={{ zIndex: 3 }}
-  />
-</div>
+            <div className="w-full h-full rounded-full overflow-hidden relative">
+              <img
+                src="/backgroundajeet.png"
+                alt="Background"
+                className="w-full h-full rounded-full"
+                style={{ zIndex: 1 }}
+              />
+              <motion.img
+                src="/ajeet.png"
+                alt="Ajeet Sharma"
+                className="rounded-full absolute inset-0 w-full h-full"
+                initial={{ y: 80, opacity: 0, scale: 0.9 }}
+                animate={{ y: 0, opacity: 1, scale: 1 }}
+                transition={{ type: "spring", stiffness: 80, damping: 25 }}
+                style={{ zIndex: 2 }}
+              />
+            </div>
+            <div
+              className="absolute inset-0 w-full h-full rounded-full border-4 pointer-events-none"
+              style={{ zIndex: 3 }}
+            />
+          </div>
           <motion.div
             className="absolute -top-14 lg:left-90 left-1/2 transform -translate-x-1/2 text-base sm:text-lg md:text-xl font-bold text-gray-300 whitespace-nowrap"
             animate={{
