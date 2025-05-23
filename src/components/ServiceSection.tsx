@@ -21,9 +21,9 @@ import CenterButton from "./centerButton";
 
 
 
-export function ServiceSection() {
+export default function ServiceSection({ id }: { id: string }) {
   return (
-    <div>
+    <div id={id}>
       <CenterButton name="Services"/>
       <FeatureCards/>
       <AIDashboard/>
