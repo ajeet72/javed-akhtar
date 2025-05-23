@@ -75,11 +75,11 @@ const codeSnippets = [
 ];
 
 const cardWrapper =
-  "bg-black text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[28rem]";
+  "bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] hover:scale-[1.017] transition duration-300 text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[28rem]";
 
 export default function ProcessSection({ id }: { id: string }) {
   return (
-    <section id={id} className="py-24 px-4 md:px-8">
+    <section id={id} className="px-6 md:px-8">
       <CenterButton name="Process"/>
       <div className="max-w-7xl mx-auto">
         {/* Section heading */}
@@ -103,8 +103,10 @@ export default function ProcessSection({ id }: { id: string }) {
     </section>
   );
 }
+
+
 function LaunchMaintainProcess() {
-  const [selectedFeature, setSelectedFeature] = useState("Efficiency"); // Default selected feature
+  const [selectedFeature, setSelectedFeature] = useState("Efficiency");
 
   const features = [
     { icon: ShieldCheck, label: "Security" },
@@ -113,6 +115,10 @@ function LaunchMaintainProcess() {
     { icon: CheckCircle2, label: "Accuracy" },
     { icon: Target, label: "Reliability" },
   ];
+
+  const BUTTON_HEIGHT = 30; 
+  const BUTTON_MARGIN = 10; 
+  const getTop = (idx: number) => idx * (BUTTON_HEIGHT + BUTTON_MARGIN);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -128,6 +134,8 @@ function LaunchMaintainProcess() {
     return () => clearInterval(interval);
   }, [features]);
 
+  const selectedIdx = features.findIndex(f => f.label === selectedFeature);
+
   return (
     <div className={cardWrapper}>
       <div className="bg-[#1a1a1a] rounded-2xl p-4 flex-1 flex flex-col space-y-4">
@@ -140,32 +148,46 @@ function LaunchMaintainProcess() {
 
         {/* Main Content */}
         <div className="flex flex-1 pt-2">
-          {/* Left Side: Buttons */}
-          <div className="w-1/2 space-y-4">
-            {features.map(({ icon: Icon, label }) => (
-              <button
-                key={label}
-                onClick={() => setSelectedFeature(label)} // Update selected feature
-                className={`flex items-center space-x-2 w-full text-left cursor-pointer ${
-                  selectedFeature === label
-                    ? "bg-[#333] px-2 py-1 rounded-lg"
-                    : ""
-                }`}
-              >
-                <Icon
-                  className={`w-5 h-5 ${
-                    selectedFeature === label ? "text-white" : "text-gray-400"
-                  }`}
-                />
-                <span
-                  className={`text-sm ${
-                    selectedFeature === label ? "font-medium" : "text-gray-400"
-                  }`}
+          {/* Left Side: Buttons with animated background */}
+          <div className="w-1/2 relative" style={{ minHeight: `${features.length * (BUTTON_HEIGHT + BUTTON_MARGIN)}px` }}>
+            {/* Animated background */}
+            <div
+              className="absolute left-0 w-full h-10 bg-[#333] rounded-lg z-0 transition-all duration-300"
+              style={{
+                top: `${getTop(selectedIdx)}px`,
+                boxShadow: "0 4px 24px 0 rgba(0,0,0,0.15)",
+              }}
+            />
+            {/* Buttons */}
+            <div className="relative z-10 flex flex-col">
+              {features.map(({ icon: Icon, label }, idx) => (
+                <button
+                  key={label}
+                  onClick={() => setSelectedFeature(label)}
+                  className={`flex items-center space-x-1 w-full text-left cursor-pointer h-10 px-2 py-0
+                    transition-all duration-300 ease-in-out
+                    ${selectedFeature === label ? "font-semibold text-white" : "text-gray-400 hover:text-white"}
+                  `}
+                  style={{
+                    background: "transparent",
+                    position: "relative",
+                  }}
                 >
-                  {label}
-                </span>
-              </button>
-            ))}
+                  <Icon
+                    className={`w-5 h-5 transition-colors duration-300 ${
+                      selectedFeature === label ? "text-white" : "text-gray-400"
+                    }`}
+                  />
+                  <span
+                    className={`text-sm transition-colors duration-300 ${
+                      selectedFeature === label ? "font-medium text-white" : "text-gray-400"
+                    }`}
+                  >
+                    {label}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Right Side: Status */}

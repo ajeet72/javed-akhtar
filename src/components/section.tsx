@@ -17,7 +17,7 @@ export default function TestimonialsSection({ id }: { id: string }) {
     ];
   
     return (
-      <section id={id} className=" py-16 px-6 sm:px-12 relative z-10"> {/* Added relative and z-10, made background slightly transparent */}
+      <section id={id} className="px-6 sm:px-12 relative z-10"> {/* Added relative and z-10, made background slightly transparent */}
         <div className="max-w-5xl mx-auto text-center text-white">
           <h2 className="text-4xl font-bold mb-10">What Our Customers Say</h2>
           <div className="grid md:grid-cols-3 gap-8">

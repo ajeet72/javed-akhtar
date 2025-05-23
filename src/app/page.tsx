@@ -8,6 +8,7 @@ import ProcessSection from "@/components/porcessSection";
 import ProjectCard from "@/components/projectCard";
 import ProjectsSection from "@/components/projectsSection";
 import TestimonialsSection from "@/components/section";
+import { ServiceSection } from "@/components/ServiceSection";
 import SkillsComponent from "@/components/skillsSection";
 import Topbar from "@/components/topbar";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <div className="relative z-10">
         <Topbar/>
         <HeroSection id="home"/>
+        <ServiceSection />
         <ProjectsSection id="projects"/>
         <BenefitsSection id="benefits"/>
         <ProcessSection id="process"/>

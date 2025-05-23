@@ -17,7 +17,7 @@ export default function HeroSection({ id }: { id: string }) {
   return (
     <div
       id={id}
-      className="min-h-fit mclaren-font text-white flex flex-col items-center justify-center py-14 pt-44 text-center px-4 sm:px-6 lg:px-8"
+      className="min-h-fit mclaren-font text-white flex flex-col items-center justify-center pt-44 text-center px-4 sm:px-6 lg:px-8"
     >
       {/* Avatar + Tagline */}
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-24 items-center">

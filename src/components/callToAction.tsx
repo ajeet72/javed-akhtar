@@ -4,7 +4,7 @@ import AnimatedButton from "./animatedButton";
 
 export default function CallToAction({ id }: { id: string }) {
   return (
-    <div id={id} className="flex items-center justify-center text-center px-6 py-20">
+    <div id={id} className="flex items-center justify-center text-center px-6">
       <div className="max-w-xl">
         <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
           Let’s talk about <br />

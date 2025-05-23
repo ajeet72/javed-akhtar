@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function SkillsComponent({ id }: { id: string }) {
   return (
     <div id={id} className="flex flex-col items-center justify-center min-h-fit text-center">
-      <div className="mb-6">
+      <div>
         <h1 className="text-white text-3xl md:text-4xl font-bold">
           I'm currently looking to join a{" "}
           <span className="text-[#A88BFE]">cross-functional</span> team

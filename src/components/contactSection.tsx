@@ -69,7 +69,7 @@ export default function ContactForm({ id }: { id: string }) {
 
   return (
     <div id={id} >
-      <div className="min-h-fit text-white flex items-center justify-center px-8 py-16">
+      <div className="min-h-fit text-white flex items-center justify-center px-6">
         <motion.div
           className="max-w-6xl w-full flex flex-col md:flex-row md:space-x-12 space-y-12 md:space-y-0"
           initial="hidden"
