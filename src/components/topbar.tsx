@@ -79,7 +79,7 @@ export default function TopBar() {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 text-white mx-6 mt-3 md:mx-10 md:mt-4 transition-all duration-300
         rounded-xl border border-slate-800 backdrop-blur-md
-        ${isScrolled ? "md:!mx-auto md:!w-fit md:!px-4" : "md:mx-68"}
+        ${isScrolled ? "md:!mx-auto md:!w-fit md:!px-6" : "lg:mx-68"}
       `}
     >
       {/* Main Container */}
@@ -94,7 +94,7 @@ export default function TopBar() {
           whileTap={{ scale: 0.95 }}
           className="cursor-pointer"
         >
-          <img src="/logo.png" alt="Logo" className="h-6" />
+          <img src="/logo.png" alt="Logo" className="h-6 min-w-[3.5rem] min-h-[1.5rem] object-contain shrink-0 grow-0" />
         </motion.div>
 
         {/* Desktop Navigation */}

@@ -3,7 +3,7 @@ import CenterButton from "./centerButton";
 
 export default function CallToAction({ id }: { id: string }) {
   return (
-    <div id={id}>
+    <div id={id} className="pb-14">
       <CenterButton name="Let’s Talk" />
       <div className="flex items-center justify-center text-center px-6">
         <div className="max-w-xl">

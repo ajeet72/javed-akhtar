@@ -305,7 +305,7 @@ export function DevelopmentTestProcess() {
 
   return (
     <div className={cardWrapper}>
-      <div className="bg-[#1a1a1a] rounded-2xl px-4 pt-3 pb-5 font-mono text-sm leading-6 flex-grow flex flex-col">
+      <div className="bg-[#1a1a1a] rounded-2xl px-6 pt-3 pb-5 font-mono text-sm leading-6 flex-grow flex flex-col">
         <div className="flex space-x-2 mb-2">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
