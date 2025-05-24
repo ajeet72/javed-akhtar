@@ -44,9 +44,9 @@ export default function HeroSection({ id }: { id: string }) {
               <motion.img
                 src="/ajeet.png"
                 alt="Ajeet Sharma"
-                className="rounded-full absolute inset-0 w-full h-full"
-                initial={{ y: 80, opacity: 0, scale: 0.9 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
+                className="rounded-full absolute inset-0 w-full h-full mt-3"
+                initial={{ y: 80, scale: 0.9 }}
+                animate={{ y: 0, scale: 1 }}
                 transition={{ type: "spring", stiffness: 80, damping: 25 }}
                 style={{ zIndex: 2 }}
               />
