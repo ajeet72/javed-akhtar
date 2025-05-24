@@ -45,15 +45,33 @@ export function FeatureCards() {
           },
         }}
       >
-        <motion.div custom="left" variants={cardVariants}>
+        <motion.div
+          custom="left"
+          variants={cardVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <BusinessChatbotCard />
         </motion.div>
 
-        <motion.div custom="bottom" variants={cardVariants}>
+        <motion.div
+          custom="bottom"
+          variants={cardVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <MvpWebAppCard />
         </motion.div>
 
-        <motion.div custom="right" variants={cardVariants}>
+        <motion.div
+          custom="right"
+          variants={cardVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <MaintenanceTrackerCard />
         </motion.div>
       </motion.div>
@@ -63,7 +81,7 @@ export function FeatureCards() {
 
 function BusinessChatbotCard() {
   return (
-    <div className="bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] text-white rounded-2xl p-6 border border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between h-[500px]">
+    <div className="bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] text-white rounded-2xl p-6 border border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between min-h-[350px] md:min-h-[500px]">
       <div>
         <div className="mb-3 text-sm text-gray-400 flex items-center gap-2">
           <Bot className="text-green-400" size={20} />
@@ -84,10 +102,12 @@ function BusinessChatbotCard() {
               <Zap size={12} className="text-yellow-400" /> GPT-4 Response
             </span>
             <span className="bg-[#222] px-2 py-1 rounded-full flex items-center gap-1">
-              <ShieldCheck size={12} className="text-blue-400" /> End-to-End Encrypted
+              <ShieldCheck size={12} className="text-blue-400" /> End-to-End
+              Encrypted
             </span>
             <span className="bg-[#222] px-2 py-1 rounded-full flex items-center gap-1">
-              <MessageSquareText size={12} className="text-green-400" /> Multilingual
+              <MessageSquareText size={12} className="text-green-400" />{" "}
+              Multilingual
             </span>
           </div>
         </div>
@@ -95,7 +115,9 @@ function BusinessChatbotCard() {
       <div className="mt-6">
         <h3 className="text-lg font-semibold mb-1">Business Chatbot</h3>
         <p className="text-sm text-gray-400">
-          Engage users 24/7 with intelligent AI chatbots that automate onboarding, support, and product recommendations — all multilingual and secure.
+          Engage users 24/7 with intelligent AI chatbots that automate
+          onboarding, support, and product recommendations — all multilingual
+          and secure.
         </p>
       </div>
     </div>
@@ -104,7 +126,7 @@ function BusinessChatbotCard() {
 
 function MvpWebAppCard() {
   return (
-    <div className="bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] text-white rounded-2xl p-6 border border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between h-[500px]">
+    <div className="bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] text-white rounded-2xl p-6 border border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between min-h-[350px] md:min-h-[500px]">
       <div>
         <div className="mb-3 text-sm text-gray-400 flex items-center gap-2">
           <LayoutDashboard className="text-cyan-400" size={20} />
@@ -130,20 +152,26 @@ function MvpWebAppCard() {
         </div>
         <div className="text-xs text-gray-400 mt-3 border-t border-gray-700 pt-2 space-y-1">
           <div className="flex items-center gap-2">
-            <BadgeCheck size={14} className="text-green-400" /> CI/CD Pipeline Setup
+            <BadgeCheck size={14} className="text-green-400" /> CI/CD Pipeline
+            Setup
           </div>
           <div className="flex items-center gap-2">
-            <BadgeCheck size={14} className="text-green-400" /> Auth + Role Access
+            <BadgeCheck size={14} className="text-green-400" /> Auth + Role
+            Access
           </div>
           <div className="flex items-center gap-2">
-            <BadgeCheck size={14} className="text-green-400" /> REST & GraphQL APIs
+            <BadgeCheck size={14} className="text-green-400" /> REST & GraphQL
+            APIs
           </div>
         </div>
       </div>
       <div className="mt-6">
-        <h3 className="text-lg font-semibold mb-1">MVP & Web App Development</h3>
+        <h3 className="text-lg font-semibold mb-1">
+          MVP & Web App Development
+        </h3>
         <p className="text-sm text-gray-400">
-          From dev metrics to deploy — get a robust, scalable MVP or web app tailored to your startup’s goals, fast.
+          From dev metrics to deploy — get a robust, scalable MVP or web app
+          tailored to your startup’s goals, fast.
         </p>
       </div>
     </div>
@@ -152,7 +180,7 @@ function MvpWebAppCard() {
 
 function MaintenanceTrackerCard() {
   return (
-    <div className="bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] text-white rounded-2xl p-6 border border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between h-[500px]">
+    <div className="bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] text-white rounded-2xl p-6 border border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between min-h-[350px] md:min-h-[500px]">
       <div>
         <div className="mb-3 text-sm text-gray-400 flex items-center gap-2">
           <Wrench className="text-yellow-400" size={20} />
@@ -197,7 +225,8 @@ function MaintenanceTrackerCard() {
       <div className="mt-6">
         <h3 className="text-lg font-semibold mb-1">Maintenance & Support</h3>
         <p className="text-sm text-gray-400">
-          From uptime monitoring to scheduled patches and deployment logs — we make sure your app runs smoothly 24/7.
+          From uptime monitoring to scheduled patches and deployment logs — we
+          make sure your app runs smoothly 24/7.
         </p>
       </div>
     </div>
@@ -233,7 +262,7 @@ export function AIDashboard() {
 
 export function IntegrationCard() {
   return (
-    <div className="bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] rounded-2xl p-6 border border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between h-[400px]">
+    <div className="bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] rounded-2xl p-6 border border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between min-h-[350px] md:min-h-[400px]">
       <div>
         <div className="mb-3 text-sm text-gray-400 flex items-center gap-2">
           <CreditCard className="text-purple-400" size={20} />
@@ -269,7 +298,9 @@ export function IntegrationCard() {
       <div className="mt-6">
         <h3 className="text-lg font-semibold mb-1">API & Payment Gateway</h3>
         <p className="text-sm text-gray-400">
-          Integrate industry-standard gateways like Stripe, Razorpay, and Amazon Pay to handle payments securely and seamlessly — fully managed, scalable, and developer-ready.
+          Integrate industry-standard gateways like Stripe, Razorpay, and Amazon
+          Pay to handle payments securely and seamlessly — fully managed,
+          scalable, and developer-ready.
         </p>
       </div>
     </div>
@@ -280,7 +311,7 @@ export function IntegrationCard() {
 
 export function AnalyticsCard() {
   return (
-    <div className="bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] rounded-2xl p-6 border border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between h-[400px]">
+    <div className="bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] rounded-2xl p-6 border border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between min-h-[350px] md:min-h-[400px]">
       <div>
         <div className="mb-3 text-sm text-gray-400 flex items-center gap-2">
           <TrendingUp className="text-pink-400" size={20} />
@@ -316,7 +347,8 @@ export function AnalyticsCard() {
       <div className="mt-6">
         <h3 className="text-lg font-semibold mb-1">AI Analytics Suite</h3>
         <p className="text-sm text-gray-400">
-          Leverage real-time insights with GPT-powered analytics, SEO automation, global user behavior mapping, and performance forecasts.
+          Leverage real-time insights with GPT-powered analytics, SEO
+          automation, global user behavior mapping, and performance forecasts.
         </p>
       </div>
     </div>

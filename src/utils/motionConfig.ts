@@ -10,7 +10,7 @@ export const cardVariants = {
     y: 0,
     transition: {
       type: 'spring',
-      duration: 2.8,
+      duration: 3.8,
       ease: 'easeInOut',
     },
   },
