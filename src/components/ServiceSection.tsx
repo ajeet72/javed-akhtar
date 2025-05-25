@@ -38,7 +38,7 @@ export function FeatureCards() {
         className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-7xl"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.5 }}
         variants={{
           visible: {
             transition: { staggerChildren: 0.2 },
@@ -50,7 +50,7 @@ export function FeatureCards() {
           variants={cardVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           <BusinessChatbotCard />
         </motion.div>
@@ -60,7 +60,7 @@ export function FeatureCards() {
           variants={cardVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           <MvpWebAppCard />
         </motion.div>
@@ -70,7 +70,7 @@ export function FeatureCards() {
           variants={cardVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           <MaintenanceTrackerCard />
         </motion.div>
@@ -240,17 +240,16 @@ export function AIDashboard() {
         className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-7xl"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={{
-          visible: {
-            transition: { staggerChildren: 0.2 },
-          },
-        }}
+        viewport={{ once: true, amount: 0.5 }}
       >
-        <motion.div custom="left" variants={cardVariants}>
+        <motion.div custom="left" variants={cardVariants} initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}>
           <IntegrationCard />
         </motion.div>
-        <motion.div custom="right" variants={cardVariants}>
+        <motion.div custom="right" variants={cardVariants} initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}>
           <AnalyticsCard />
         </motion.div>
       </motion.div>

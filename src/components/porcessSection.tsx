@@ -76,29 +76,8 @@ const codeSnippets = [
   testFeature();`,
 ];
 
-const cardWrapper =
-    "bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] hover:scale-[1.017] transition duration-300 text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[350px] md:min-h-[500px]";
+const cardWrapper = "bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] transition duration-300 text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[350px] md:min-h-[500px] border border-gray-800";
 
-const fadeInVariant = (direction: 'left' | 'right' | 'up') => {
-  const variants = {
-    hidden: {
-      opacity: 0,
-      x: direction === 'left' ? -100 : direction === 'right' ? 100 : 0,
-      y: direction === 'up' ? 100 : 0,
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        type: 'spring',
-        duration: 2.8,
-        ease: 'easeInOut',
-      },
-    },
-  };
-  return variants;
-};
 
 export default function ProcessSection({ id }: { id: string }) {
   return (
@@ -118,23 +97,24 @@ export default function ProcessSection({ id }: { id: string }) {
 
         {/* Animated grid of process cards */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-hidden max-h-[80vh]"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{
-            visible: {
-              transition: { staggerChildren: 0.2 },
-            },
-          }}
+          viewport={{ once: true, amount: 0.5 }}
         >
-          <motion.div custom="left" variants={cardVariants}>
+          <motion.div custom="left" variants={cardVariants} initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}>
             <DiscoveryAnalysisProcess />
           </motion.div>
-          <motion.div custom="bottom" variants={cardVariants}>
+          <motion.div custom="bottom" variants={cardVariants} initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}>
             <DevelopmentTestProcess />
           </motion.div>
-          <motion.div custom="right" variants={cardVariants}>
+          <motion.div custom="right" variants={cardVariants} initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}>
             <LaunchMaintainProcess />
           </motion.div>
         </motion.div>
@@ -188,7 +168,6 @@ function LaunchMaintainProcess() {
 
         {/* Main Content */}
         <div className="flex flex-1 pt-2">
-          {/* Left Side: Buttons with animated background */}
           <div className="w-1/2 relative" style={{ minHeight: `${features.length * (BUTTON_HEIGHT + BUTTON_MARGIN)}px` }}>
             {/* Animated background */}
             <div
