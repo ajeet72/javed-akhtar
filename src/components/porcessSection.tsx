@@ -76,8 +76,8 @@ const codeSnippets = [
   testFeature();`,
 ];
 
-const cardWrapper = "bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] transition duration-300 text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[350px] md:min-h-[500px] border border-gray-800";
-
+const cardWrapper =
+  "bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] transition duration-300 text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[300px] md:min-h-[350px] lg:min-h-[500px] border border-gray-800";
 
 export default function ProcessSection({ id }: { id: string }) {
   return (
@@ -97,7 +97,7 @@ export default function ProcessSection({ id }: { id: string }) {
 
         {/* Animated grid of process cards */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-hidden max-h-[80vh]"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}

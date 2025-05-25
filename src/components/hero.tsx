@@ -133,24 +133,6 @@ export default function HeroSection({ id }: { id: string }) {
             Software Engineer.
           </motion.span>
         </h1>
-        <p className="text-sm text-gray-300 mb-8">
-          Currently, I'm a Software Engineer at{" "}
-          <motion.a
-            href="https://facebook.com"
-            className="text-blue-400 hover:underline inline-flex items-center"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg
-              className="w-4 h-4 mr-1"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M22 12a10 10 0 1 0-11.5 9.87v-6.99H8v-2.88h2.5V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.62.77-1.62 1.56v1.87h2.76l-.44 2.88h-2.32v6.99A10 10 0 0 0 22 12z" />
-            </svg>
-            Facebook
-          </motion.a>
-        </p>
 
         <motion.p
           className="max-w-2xl text-lg sm:text-xl text-gray-300 py-4 mx-auto lg:mx-0"
