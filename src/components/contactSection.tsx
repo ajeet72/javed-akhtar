@@ -1,9 +1,11 @@
 "use client";
 
-import { Mail, MailIcon, Phone, CheckCircle } from "lucide-react";
+import { MailIcon, CheckCircle, MessageCircle } from "lucide-react";
 import CenterButton from "./centerButton";
 import { useState } from "react";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
+import { cardVariants } from "@/utils/motionConfig";
+
 
 export default function ContactForm({ id }: { id: string }) {
   const [email, setEmail] = useState("");
@@ -14,11 +16,6 @@ export default function ContactForm({ id }: { id: string }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!name || !email || !message) {
-      console.error("All fields are required.");
-      return;
-    }
 
     setIsSubmitting(true);
 
@@ -62,35 +59,26 @@ export default function ContactForm({ id }: { id: string }) {
     },
   };
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
-    <div id={id} >
+    <div id={id}>
       <CenterButton name="Contact" />
       <div className="min-h-fit text-white flex items-center justify-center px-6">
-        <motion.div
-          className="max-w-6xl w-full flex flex-col md:flex-row md:space-x-12 space-y-12 md:space-y-0"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.8 }}
-          variants={fadeInUp}
-        >
+        <div className="max-w-6xl w-full flex flex-col md:flex-row md:space-x-12 space-y-12 md:space-y-0">
           {/* Left: Info Section */}
           <motion.div
             className="w-full md:w-1/2 px-4 lg:px-0"
-            variants={fadeInUp}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            custom="left"
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Ask whatever you have <br /> in your mind
             </h1>
             <p className="text-base sm:text-lg text-gray-300 mb-8">
               Whether you have questions or are ready to discuss your business,
-              we’re here to help. Reach out today.
+              we're here to help. Reach out today.
             </p>
             <motion.div
               className="space-y-4 text-sm text-gray-200"
@@ -116,7 +104,7 @@ export default function ContactForm({ id }: { id: string }) {
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Phone className="text-purple-400" />
+                <MessageCircle className="text-purple-400" />
                 <a
                   href="https://wa.me/916206859849"
                   target="_blank"
@@ -132,8 +120,11 @@ export default function ContactForm({ id }: { id: string }) {
           <motion.form
             className="w-full md:w-1/2 bg-[#111111] p-6 sm:p-8 rounded-xl shadow-md space-y-6"
             onSubmit={handleSubmit}
-            variants={fadeInUp}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            custom="right"
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
           >
             <div>
               <label className="block mb-1 text-sm text-gray-300">Name</label>
@@ -142,7 +133,7 @@ export default function ContactForm({ id }: { id: string }) {
                 onChange={(e) => setName(e.target.value)}
                 type="text"
                 placeholder="Jane Smith"
-                className="w-full bg-black text-white border border-gray-700 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full bg-black text-white border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:ring-1 focus:ring-purple-500"
               />
             </div>
             <div>
@@ -151,8 +142,8 @@ export default function ContactForm({ id }: { id: string }) {
                 required
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
-                placeholder="jane@framer.com"
-                className="w-full bg-black text-white border border-gray-700 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                placeholder="jane@example.com"
+                className="w-full bg-black text-white border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:ring-1 focus:ring-purple-500"
               />
             </div>
             <div>
@@ -163,8 +154,8 @@ export default function ContactForm({ id }: { id: string }) {
                 required
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Hi, I am reaching out for..."
-                rows={4}
-                className="w-full bg-black text-white border border-gray-700 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                rows={3}
+                className="w-full bg-black text-white border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:ring-1 focus:ring-purple-500"
               ></textarea>
             </div>
             <button
@@ -181,14 +172,16 @@ export default function ContactForm({ id }: { id: string }) {
               {isSubmitting ? (
                 "Submitting..."
               ) : isSuccess ? (
-                <CheckCircle className="inline-block w-5 h-5 mr-2" />
+                <>
+                  <CheckCircle className="inline-block w-5 h-5 mr-2" />
+                  Sent
+                </>
               ) : (
                 "Submit"
               )}
-              {isSuccess ? "Sent" : ""}
             </button>
           </motion.form>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

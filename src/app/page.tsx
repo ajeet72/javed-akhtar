@@ -3,6 +3,7 @@ import CallToAction from "@/components/callToAction";
 import CenterButton from "@/components/centerButton";
 import ContactForm from "@/components/contactSection";
 import CursorGradient from "@/components/cursorGradient";
+import Footer from "@/components/footer";
 import HeroSection from "@/components/hero";
 import ProcessSection from "@/components/porcessSection";
 import ProjectsSection from "@/components/projectsSection";
@@ -26,6 +27,7 @@ export default function Home() {
         <TestimonialsSection id="testimonials"/>
         <ContactForm id="contact"/>
         <CallToAction id="cta"/>
+        <Footer/>
       </div>
     </main>
   );
