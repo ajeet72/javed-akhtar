@@ -74,16 +74,16 @@ export default function HeroSection({ id }: { id: string }) {
 
         {/* Slogan */}
         <motion.div
-          className="text-2xl sm:text-3xl text-center lg:text-left font-semibold leading-snug mb-2 pt-10"
+          className="text-2xl sm:text-3xl text-center lg:text-left leading-snug mb-2 pt-10"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
         >
           A Developer who <br />
           <span className="text-4xl sm:text-5xl font-bold">
-            Judges a book <br /> by its{" "}
+            Builds the engine before <br /> polishing the paint
             <span className="relative inline-block">
-              <span className="text-purple-400 z-10 relative">cover</span>
+              <span className="text-purple-400 z-10 relative"></span>
               <motion.span
                 className="absolute bottom-0 left-0 w-full h-1 bg-purple-400 opacity-50 rounded-full blur-sm"
                 animate={{ width: ["0%", "100%", "0%"] }}
@@ -102,7 +102,7 @@ export default function HeroSection({ id }: { id: string }) {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
           >
-            Because if the cover does not impress you, what else can?
+            Because speed, structure, and scalability come first.
           </motion.p>
         </motion.div>
       </div>
@@ -130,7 +130,7 @@ export default function HeroSection({ id }: { id: string }) {
               repeat: Infinity,
             }}
           >
-            Software Engineer.
+            Full Stack Developer.
           </motion.span>
         </h1>
 
@@ -140,9 +140,7 @@ export default function HeroSection({ id }: { id: string }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
         >
-          A self-taught UI/UX designer, functioning in the industry for 1+ years
-          now. I make meaningful and delightful digital products that create an
-          equilibrium between user needs and business goals.
+          A self-taught Full Stack Developer with 1+ years of experience, building scalable web applications and backend systems. I craft high-performance digital solutions that balance technical excellence with real-world impact.
         </motion.p>
       </motion.div>
     </div>
