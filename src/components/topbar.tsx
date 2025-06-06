@@ -99,7 +99,7 @@ export default function TopBar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-2 text-sm font-medium px-4">
-          {["process", "services", "benefits", "projects", "contact",].map((id) => (
+          {["home", "process", "services", "benefits", "projects", "contact",].map((id) => (
             <motion.button
               key={id}
               onClick={() => scrollToSection(id)}
@@ -158,7 +158,7 @@ export default function TopBar() {
             variants={menuVariants}
             className="md:hidden border-t border-slate-800 mt-2 pt-4 pb-6 px-4 space-y-3"
           >
-            {["process", "services", "benefits", "projects", "contact"].map((id) => (
+            {["home", "process", "services", "benefits", "projects", "contact"].map((id) => (
               <motion.button
                 key={id}
                 onClick={() => scrollToSection(id)}
