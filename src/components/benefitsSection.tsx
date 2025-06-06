@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import React from "react";
 import { Check, TrendingUp, Activity } from "lucide-react";
 import CenterButton from "./centerButton";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import { cardVariants } from "@/utils/motionConfig";
 
 const benefits = [
@@ -41,18 +41,18 @@ export default function BenefitsSection({ id }: { id: string }) {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {benefits.map((benefit, idx) => (
-            <div
+            <motion.div
               key={idx}
               className="relative p-6 rounded-2xl shadow-md hover:shadow-lg transition-all overflow-hidden bg-gray-950"
+              custom="bottom"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
             >
-              <motion.div custom="bottom" variants={cardVariants} initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}>
-              <div className="absolute -right-[5px] -top-[5px] h-[120px] w-[120px] bg-[rgba(47,0,255,0.5)] rounded-[231px] blur-[40px] z-[1]"></div>
+              <div className="absolute -right-[5px] -top-[5px] h-[120px] w-[120px] bg-[rgba(47,0,255,0.5)] rounded-[231px] blur-[40px] z-[1]" />
 
               <div className="relative z-[2]">
-                {" "}
-                {/* This ensures content stays above the blur */}
                 <div className="mb-4 bg-gray-800 p-2 rounded-md inline-block">
                   {benefit.icon}
                 </div>
@@ -61,8 +61,7 @@ export default function BenefitsSection({ id }: { id: string }) {
                   {benefit.description}
                 </p>
               </div>
-              </motion.div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
