@@ -38,7 +38,9 @@ export default function Footer() {
             <h1 className="text-xl font-semibold">Ajeet Sharma</h1>
           </div>
           <p className="max-w-xs text-sm text-gray-300 mb-6">
-Helping businesses turn ideas into fast, scalable, and user-focused digital products—built to perform and built to last.          </p>
+            Helping businesses turn ideas into fast, scalable, and user-focused
+            digital products—built to perform and built to last.
+          </p>
 
           {/* Social Icons */}
           <div className="flex gap-2">
