@@ -77,11 +77,11 @@ const codeSnippets = [
 ];
 
 const cardWrapper =
-  "bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] transition duration-300 text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[300px] md:min-h-[350px] lg:min-h-[500px] border border-gray-800";
+  "bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] transition duration-300 text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between min-h-[500px] border border-gray-800";
 
 export default function ProcessSection({ id }: { id: string }) {
   return (
-    <section id={id} className="px-6 sm:px-4 md:px-8">
+    <section id={id} className="px-6 sm:px-4 md:px-8 overflow-y-hidden">
       <CenterButton name="Process" />
       <div className="max-w-7xl mx-auto">
         {/* Section heading */}

@@ -1,6 +1,10 @@
+"use client"
+
 import React from "react";
 import { Check, TrendingUp, Activity } from "lucide-react";
 import CenterButton from "./centerButton";
+import { motion } from 'framer-motion';
+import { cardVariants } from "@/utils/motionConfig";
 
 const benefits = [
   {
@@ -39,9 +43,11 @@ export default function BenefitsSection({ id }: { id: string }) {
           {benefits.map((benefit, idx) => (
             <div
               key={idx}
-              className="relative p-6 rounded-2xl shadow-md hover:shadow-lg transition-all overflow-hidden bg-gray-950" // Added bg-gray-900 as base card color
+              className="relative p-6 rounded-2xl shadow-md hover:shadow-lg transition-all overflow-hidden bg-gray-950"
             >
-              {/* Blurry background element */}
+              <motion.div custom="bottom" variants={cardVariants} initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.3 }}>
               <div className="absolute -right-[5px] -top-[5px] h-[120px] w-[120px] bg-[rgba(47,0,255,0.5)] rounded-[231px] blur-[40px] z-[1]"></div>
 
               <div className="relative z-[2]">
@@ -55,6 +61,7 @@ export default function BenefitsSection({ id }: { id: string }) {
                   {benefit.description}
                 </p>
               </div>
+              </motion.div>
             </div>
           ))}
         </div>

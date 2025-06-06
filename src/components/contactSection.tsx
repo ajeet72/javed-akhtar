@@ -62,7 +62,7 @@ export default function ContactForm({ id }: { id: string }) {
   return (
     <div id={id}>
       <CenterButton name="Contact" />
-      <div className="min-h-fit text-white flex items-center justify-center px-6">
+      <div className="min-h-fit text-white flex items-center justify-center px-6 overflow-x-hidden">
         <div className="max-w-6xl w-full flex flex-col md:flex-row md:space-x-12 space-y-12 md:space-y-0">
           {/* Left: Info Section */}
           <motion.div
