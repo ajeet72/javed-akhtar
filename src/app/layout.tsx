@@ -30,6 +30,7 @@ export default function RootLayout({
           rel="stylesheet"
           precedence="default"
         />
+        <link rel="icon" href="/icon.png" type="image/png" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased mclaren-font bg-[#11071F]`}
       >
