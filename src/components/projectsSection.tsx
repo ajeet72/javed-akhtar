@@ -11,7 +11,21 @@ export default function ProjectsSection({ id }: { id: string }) {
         image="/projectImage/medium.png"
         projectUrl="https://medium-blog-six-gamma.vercel.app/"
         scrollImage={false}
+      />
+      <ProjectCard
+        title="Paytm-Inspired Payment App"
+        description="Built a secure and scalable Paytm-like web app using React, Node.js, Express, and MongoDB. Implemented JWT-based authentication for user login and money transfers. Designed RESTful APIs to manage user accounts, transaction logic, and initial dummy balances, simulating a real-world payment system."
+        image="/projectImage/paytm.png"
+        projectUrl="https://paytm-iota.vercel.app/"
+        scrollImage={false}
         reverse={true}
+      />
+      <ProjectCard
+        title="Scalable Backend System with Queue Management"
+        description="Built a robust backend using TypeScript, Express, Redis, and PostgreSQL to process user requests through an efficient queue system. Integrated Prometheus and Grafana for real-time monitoring and system visibility. Focused on performance, reliability, and secure data handling."
+        image="/projectImage/queueDesign.png"
+        projectUrl="https://paytm-iota.vercel.app/"
+        scrollImage={false}
       />
       <ProjectCard
         title="Beats Product Landing Page UI"
@@ -19,6 +33,7 @@ export default function ProjectsSection({ id }: { id: string }) {
         image="/projectImage/beatsFull.png"
         projectUrl="https://ajeet72.github.io/beats/"
         scrollImage={true}
+        reverse={true}
       />
       <ProjectCard
         title="PW Skills Website Clone"
@@ -26,7 +41,6 @@ export default function ProjectsSection({ id }: { id: string }) {
         image="/projectImage/pwskillsFull.png"
         projectUrl="https://ajeet72.github.io/pwskills/"
         scrollImage={true}
-        reverse={true}
       />
     </section>
   );

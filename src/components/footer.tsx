@@ -45,13 +45,10 @@ export default function Footer() {
           {/* Social Icons */}
           <div className="flex justify-center md:justify-start gap-2">
             {[
-              {
-                Icon: Linkedin,
-                href: "https://www.linkedin.com/company/yourcompany",
-              },
-              { Icon: Twitter, href: "https://twitter.com/yourhandle" },
-              { Icon: Instagram, href: "https://instagram.com/yourhandle" },
-              { Icon: Facebook, href: "https://facebook.com/yourpage" },
+              { Icon: Linkedin, href: "https://www.linkedin.com/in/ajeetkumar076", },
+              { Icon: Twitter, href: "https://x.com/ajeetkumar076" },
+              { Icon: Instagram, href: "https://www.instagram.com/ajeet_sharma.dev/" },
+              // { Icon: Facebook, href: "https://facebook.com/yourpage" },
             ].map(({ Icon, href }, i) => (
               <a
                 key={i}
@@ -70,7 +67,7 @@ export default function Footer() {
         <div>
           <h2 className="font-semibold mb-3">Sections</h2>
           <ul className="space-y-2 text-gray-300 text-sm">
-            {["home", "process", "services", "benefits", "projects", "contact"].map(
+            {["home", "services", "process", "benefits", "projects", "contact"].map(
               (id) => (
                 <li
                   key={id}

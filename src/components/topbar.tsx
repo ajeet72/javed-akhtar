@@ -99,7 +99,7 @@ export default function TopBar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-2 text-sm font-medium px-4">
-          {["home", "process", "services", "benefits", "projects", "contact",].map((id) => (
+          {["home", "services", "process", "benefits", "projects", "contact",].map((id) => (
             <motion.button
               key={id}
               onClick={() => scrollToSection(id)}

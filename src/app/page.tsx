@@ -20,10 +20,10 @@ export default function Home() {
         <Topbar/>
         <HeroSection id="home"/>
         <ServiceSection id="services"/>
-        <ProjectsSection id="projects"/>
         <BenefitsSection id="benefits"/>
         <ProcessSection id="process"/>
         <SkillsComponent id="skills"/>
+        <ProjectsSection id="projects"/>
         <TestimonialsSection id="testimonials"/>
         <ContactForm id="contact"/>
         <CallToAction id="cta"/>
