@@ -8,6 +8,7 @@ interface ProjectCardProps {
   description: string;
   image: string;
   projectUrl: string;
+  scrollImage: boolean;
   reverse?: boolean;
 }
 
@@ -16,6 +17,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   description,
   image,
   projectUrl,
+  scrollImage,
   reverse = false,
 }) => {
   const containerVariants = {
@@ -65,7 +67,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
 
   return (
     <motion.div
-      className={`cursor-pointer group flex flex-col md:flex-row items-center justify-center px-6 sm:px-12 md:px-14 lg:px-20 xl:px-28 2xl:max-w-[1400px] 2xl:mx-auto py-12 gap-8 ${
+      className={`cursor-pointer flex flex-col md:flex-row items-center justify-center px-6 sm:px-12 md:px-14 lg:px-20 xl:px-28 2xl:max-w-[1400px] 2xl:mx-auto py-12 gap-8 ${
         reverse ? "md:flex-row-reverse" : ""
       }`}
       initial="hidden"
@@ -75,7 +77,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
     >
       {/* Text Section */}
       <motion.div
-        className={`space-y-4 w-full md:w-8xl ${reverse ? "text-right" : "text-left"}`}
+        className={`space-y-4 w-full md:w-8xl ${
+          reverse ? "text-right" : "text-left"
+        }`}
         variants={containerVariants}
       >
         <motion.p className="text-sm text-purple-400" variants={itemVariants}>
@@ -106,10 +110,18 @@ const ProjectCard: FC<ProjectCardProps> = ({
           }`}
           variants={itemVariants}
         >
-          <motion.span variants={emojiVariants} initial="rest" whileHover="hover">
+          <motion.span
+            variants={emojiVariants}
+            initial="rest"
+            whileHover="hover"
+          >
             🌸
           </motion.span>
-          <motion.span variants={emojiVariants} initial="rest" whileHover="hover">
+          <motion.span
+            variants={emojiVariants}
+            initial="rest"
+            whileHover="hover"
+          >
             ❄️
           </motion.span>
         </motion.div>
@@ -124,21 +136,42 @@ const ProjectCard: FC<ProjectCardProps> = ({
         aria-label={`Visit ${title} project`}
       >
         <motion.div
-          className={`bg-[#1A0B2E] rounded-3xl shadow-lg ${
+          className={`bg-[#1A0B2E] rounded-3xl shadow-lg overflow-hidden ${
             reverse ? "pt-10 pr-6" : "pt-10 pl-6"
           }`}
           variants={imageVariants}
           whileHover="hover"
+          style={{ height: scrollImage ? "300px" : "auto" }} // fixed height
         >
-          <motion.img
-            src={image}
-            alt={`${title} preview`}
-            className="lg:w-3xl w-6xl rounded-tl-lg transition-all duration-300 grayscale group-hover:grayscale-0"
-            whileHover={{
-              scale: 1.02,
-              boxShadow: "0 20px 25px -5px rgba(168, 85, 247, 0.2)",
+          <motion.div
+            className="w-full"
+            animate={
+              scrollImage
+                ? { y: ["0%", "-85%", "0%"] } // scroll full up and back
+                : undefined
+            }
+            transition={
+              scrollImage
+                ? {
+                    duration: 20,
+                    ease: "linear",
+                    repeat: Infinity,
+                  }
+                : undefined
+            }
+            variants={{
+              hover: {
+                scale: 1.02,
+                boxShadow: "0 20px 25px -5px rgba(168, 85, 247, 0.2)",
+              },
             }}
-          />
+          >
+            <motion.img
+              src={image}
+              alt={`${title} preview`}
+              className="lg:w-4xl w-6xl h-auto rounded-tl-lg transition-all duration-300"
+            />
+          </motion.div>
         </motion.div>
       </Link>
     </motion.div>
