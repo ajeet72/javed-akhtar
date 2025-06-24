@@ -21,11 +21,19 @@ export default function ProjectsSection({ id }: { id: string }) {
         reverse={true}
       />
       <ProjectCard
+        title="Little Diet E-commerce Website"
+        description="Developed a fully responsive e-commerce website for Little Diet, a baby products brand, using TailwindCSS. Ensured smooth performance across all devices and maintained consistent communication with the client, integrating feedback promptly. The project was successfully delivered and resulted in a four-figure earning."
+        image="/projectImage/littledietFull.png"
+        projectUrl="https://www.littlediet.in/"
+        scrollImage={true}
+      />
+      <ProjectCard
         title="Scalable Backend System with Queue Management"
         description="Built a robust backend using TypeScript, Express, Redis, and PostgreSQL to process user requests through an efficient queue system. Integrated Prometheus and Grafana for real-time monitoring and system visibility. Focused on performance, reliability, and secure data handling."
         image="/projectImage/queueDesign.png"
         projectUrl="https://paytm-iota.vercel.app/"
         scrollImage={false}
+        reverse={true}
       />
       <ProjectCard
         title="Beats Product Landing Page UI"
@@ -33,7 +41,6 @@ export default function ProjectsSection({ id }: { id: string }) {
         image="/projectImage/beatsFull.png"
         projectUrl="https://ajeet72.github.io/beats/"
         scrollImage={true}
-        reverse={true}
       />
       <ProjectCard
         title="PW Skills Website Clone"
@@ -41,6 +48,7 @@ export default function ProjectsSection({ id }: { id: string }) {
         image="/projectImage/pwskillsFull.png"
         projectUrl="https://ajeet72.github.io/pwskills/"
         scrollImage={true}
+        reverse={true}
       />
     </section>
   );

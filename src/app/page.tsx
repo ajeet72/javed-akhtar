@@ -7,7 +7,7 @@ import Footer from "@/components/footer";
 import HeroSection from "@/components/hero";
 import ProcessSection from "@/components/porcessSection";
 import ProjectsSection from "@/components/projectsSection";
-import TestimonialsSection from "@/components/section";
+import TestimonialsSection from "@/components/testimonialSection";
 import ServiceSection from "@/components/ServiceSection";
 import SkillsComponent from "@/components/skillsSection";
 import Topbar from "@/components/topbar";
