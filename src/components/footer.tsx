@@ -1,6 +1,6 @@
 "use client";
 
-import { Linkedin, Twitter, Instagram, Facebook } from "lucide-react";
+import { Linkedin, Twitter, Instagram, Facebook, Github } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function Footer() {
@@ -45,8 +45,9 @@ export default function Footer() {
           {/* Social Icons */}
           <div className="flex justify-center md:justify-start gap-2">
             {[
-              { Icon: Linkedin, href: "https://www.linkedin.com/in/ajeetkumar076", },
+              { Icon: Github, href: "https://www.github.com/ajeet72/" },
               { Icon: Twitter, href: "https://x.com/ajeetkumar076" },
+              { Icon: Linkedin, href: "https://www.linkedin.com/in/ajeetkumar076", },
               { Icon: Instagram, href: "https://www.instagram.com/ajeet_sharma.dev/" },
               // { Icon: Facebook, href: "https://facebook.com/yourpage" },
             ].map(({ Icon, href }, i) => (
