@@ -1,6 +1,6 @@
 "use client";
 
-import { Linkedin, Twitter, Instagram, Facebook, Github } from "lucide-react";
+import { Linkedin, Twitter, Instagram, Facebook, Github, Youtube } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function Footer() {
@@ -35,20 +35,18 @@ export default function Footer() {
                 className="h-6 min-w-[3.5rem] min-h-[1.5rem] object-contain"
               />
             </div>
-            <h1 className="text-xl font-semibold">Ajeet Sharma</h1>
+            <h1 className="text-xl font-semibold">Md Javed Akhtar</h1>
           </div>
           <p className="max-w-xs text-sm text-gray-300 mb-6 mx-auto md:mx-0">
-            Helping businesses turn ideas into fast, scalable, and user-focused
-            digital products—built to perform and built to last.
+            Crafting engaging maps, cinematic animations, and clean edits using tools like After Effects, Premiere Pro, and Mapbox. Focused on storytelling, visuals, and designs built to inspire and last.
           </p>
 
           {/* Social Icons */}
           <div className="flex justify-center md:justify-start gap-2">
             {[
-              { Icon: Github, href: "https://www.github.com/ajeet72/" },
-              { Icon: Twitter, href: "https://x.com/ajeetkumar076" },
-              { Icon: Linkedin, href: "https://www.linkedin.com/in/ajeetkumar076", },
-              { Icon: Instagram, href: "https://www.instagram.com/ajeet_sharma.dev/" },
+              { Icon: Youtube, href: "https://youtube.com/@CREATE__NEW4" },
+              { Icon: Linkedin, href: "https://linkedin.com/in/mdjavedakhtar076", },
+              { Icon: Instagram, href: "https://instagram.com/create__new4/" },
               // { Icon: Facebook, href: "https://facebook.com/yourpage" },
             ].map(({ Icon, href }, i) => (
               <a

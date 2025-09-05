@@ -8,27 +8,27 @@ import { cardVariants } from "@/utils/motionConfig";
 const testimonials = [
   {
     name: "Samantha Lee",
-    text: "The full-stack solution exceeded expectations—clean code, great performance, and smooth deployment!",
+    text: "The custom map design was stunning—professional, accurate, and visually engaging. Perfectly captured the storytelling we needed!",
   },
   {
     name: "Rahul Mehta",
-    text: "Seamless integration between frontend and backend. Highly reliable and scalable work.",
+    text: "Brilliant motion graphics and smooth animations. The transitions felt cinematic, and the final delivery was flawless.",
   },
   {
     name: "Jessica Brown",
-    text: "Fantastic attention to detail and UI polish. Delivered on time with excellent communication.",
+    text: "Amazing attention to visual style and detail. The documentary-style edits were impactful and delivered right on time.",
   },
   {
     name: "Mohammed Alvi",
-    text: "The authentication system was rock-solid. Loved the responsiveness and clean structure.",
+    text: "The map animations were rock-solid and beautifully synced with the narrative. Truly enhanced the overall storytelling.",
   },
   {
     name: "Natalie Zhang",
-    text: "Use of Redis and PostgreSQL was spot on. Real-time features worked flawlessly.",
+    text: "The After Effects templates saved us so much time. Responsive, flexible, and they worked seamlessly in Premier Pro too.",
   },
   {
     name: "Carlos Rivera",
-    text: "A truly full-stack experience—from sleek UI to powerful backend APIs. Highly recommend!",
+    text: "Outstanding creative work—professional thumbnails, engaging edits, and polished renders. Highly recommend!",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function TestimonialsSection({ id }: { id: string }) {
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-4">What Clients Say</h2>
         <p className="text-gray-300 mb-12 max-w-2xl mx-auto">
-          Hear from clients who’ve trusted me to deliver fast, scalable, and impactful full-stack solutions.
+          Hear from clients who’ve trusted me to deliver professional map designs, engaging animations, and creative video solutions.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

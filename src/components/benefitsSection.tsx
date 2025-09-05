@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Check, TrendingUp, Activity } from "lucide-react";
+import { Check, TrendingUp, Activity, Zap } from "lucide-react";
 import CenterButton from "./centerButton";
 import { motion } from "framer-motion";
 import { cardVariants } from "@/utils/motionConfig";
@@ -9,21 +9,27 @@ import { cardVariants } from "@/utils/motionConfig";
 const benefits = [
   {
     icon: <Activity className="w-6 h-6 text-white" />,
-    title: "Cost reduction",
+    title: "Cost Efficiency",
     description:
-      "Build lightweight, scalable web apps with optimized backend logic to reduce infrastructure and maintenance costs.",
+      "Save both time and budget with complete editing, thumbnail design, and map animations — all in one place.",
   },
   {
     icon: <Check className="w-6 h-6 text-white" />,
-    title: "Improved outcomes",
+    title: "Better Results",
     description:
-      "Translate complex client requirements into custom full-stack solutions that directly improve user engagement and ROI.",
+      "Engaging edits, eye-catching thumbnails, and high-quality map animations that boost CTR, watch time, and audience trust.",
   },
   {
     icon: <TrendingUp className="w-6 h-6 text-white" />,
-    title: "Increased productivity",
+    title: "Unique Map Design",
     description:
-      "Automate repetitive workflows and streamline business operations through well-integrated systems and APIs.",
+      "Professional, custom map visuals and animations that make your content stand out from the crowd.",
+  },
+  {
+    icon: <Zap className="w-6 h-6 text-white" />,
+    title: "Increased Productivity",
+    description:
+      "Focus only on content creation — Ill handle the editing, design, and rendering to deliver upload-ready videos.",
   },
 ];
 

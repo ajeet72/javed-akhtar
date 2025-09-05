@@ -6,8 +6,8 @@ export default function ProjectsSection({ id }: { id: string }) {
     <section id={id}>
       <CenterButton name="Projects" />
       <ProjectCard
-        title="Full-Stack Blog Platform"
-        description="Built a responsive blog platform using React, TypeScript, and Cloudflare Workers. Implemented JWT-based authentication, Zod for validation, and Prisma with PostgreSQL for secure data handling. Optimized for performance and scalability with a modern serverless architecture."
+        title="Map Animation Workflow"
+        description="Created dynamic map animation videos using After Effects, Geo-Layers 3, and Premiere Pro, leveraging OpenStreetMap data for accuracy. Designed engaging, data-driven visuals optimized for storytelling, audience retention, and professional broadcast quality."
         image="/projectImage/medium.png"
         projectUrl="https://medium-blog-six-gamma.vercel.app/"
         scrollImage={false}

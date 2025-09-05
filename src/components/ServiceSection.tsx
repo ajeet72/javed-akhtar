@@ -88,9 +88,15 @@ function BusinessChatbotCard() {
           <span className="text-2xl">🌍</span> Custom Map
         </div>
         <div className="bg-[#1e1e1e] p-14 px-14 rounded-lg space-y-3 border border-gray-700">
-          <div className="bg-[#2a2a2a] px-3 py-6 rounded-lg text-xl">
+          <motion.div
+            initial={{ y: 140, scale: 0.9 }}
+            animate={{ y: 0, scale: 1 }}
+            transition={{ type: "spring", stiffness: 50, damping: 25 }}
+            style={{ zIndex: 2 }}
+            className="bg-[#2a2a2a] px-3 py-6 rounded-lg text-xl"
+          >
             Create professional, custom-styled maps from Mapbox and integrate them into GeoLayers 3.
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className="mt-6">

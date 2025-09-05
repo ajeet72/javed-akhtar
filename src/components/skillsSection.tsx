@@ -8,11 +8,11 @@ export default function SkillsComponent({ id }: { id: string }) {
       <CenterButton name="Skills" />
       <div>
         <h1 className="text-white text-3xl md:text-4xl font-bold">
-          I'm currently looking to join a{" "}
-          <span className="text-[#A88BFE]">cross-functional</span> team
+          I'm currently looking to collaborate{" "}
+          <span className="text-[#A88BFE]">on creative video projects</span> team
         </h1>
         <p className="text-gray-400 text-base md:text-lg mt-4 max-w-2xl mx-auto">
-          that values improving people's lives through accessible design
+          that bring stories to life through visuals, motion graphics, and sound.
         </p>
       </div>
 

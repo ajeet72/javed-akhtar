@@ -77,8 +77,7 @@ export default function ContactForm({ id }: { id: string }) {
               Ask whatever you have <br /> in your mind
             </h1>
             <p className="text-base sm:text-lg text-gray-300 mb-8">
-              Whether you have questions or are ready to discuss your business,
-              we're here to help. Reach out today.
+              Whether you have questions or need help with maps, animations, editing, or templates, feel free to reach out anytime.
             </p>
             <motion.div
               className="space-y-4 text-sm text-gray-200"
@@ -92,10 +91,10 @@ export default function ContactForm({ id }: { id: string }) {
               >
                 <MailIcon className="text-purple-400" />
                 <a
-                  href="mailto:ajeet62068bca@gmail.com"
+                  href="mailto:mdjavedakhtar502@gmail.com"
                   className="hover:text-slate-400 transition-colors duration-300"
                 >
-                  ajeet62068bca@gmail.com
+                  mdjavedakhtar502@gmail.com
                 </a>
               </motion.div>
               <motion.div
@@ -106,11 +105,11 @@ export default function ContactForm({ id }: { id: string }) {
               >
                 <MessageCircle className="text-purple-400" />
                 <a
-                  href="https://wa.me/916206859849"
+                  href="https://wa.me/917061665034"
                   target="_blank"
                   className="hover:text-slate-400 transition-colors duration-300"
                 >
-                  +91 62068 59849
+                  +91 70616 65034
                 </a>
               </motion.div>
             </motion.div>

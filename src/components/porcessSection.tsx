@@ -87,11 +87,10 @@ export default function ProcessSection({ id }: { id: string }) {
         {/* Section heading */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white">
-            Our Development Process
+            My Video Editing Process
           </h2>
           <p className="text-gray-400 mt-2 text-sm md:text-base max-w-2xl mx-auto">
-            A clear, tested, and professional path from discovery to deployment.
-            We deliver robust software every step of the way.
+            A clear, creative, and professional approach — from concept to final delivery. I ensure every frame tells your story with impact.
           </p>
         </div>
 
@@ -263,10 +262,9 @@ function LaunchMaintainProcess() {
 
       {/* Title & Description */}
       <div className="pt-4">
-        <h3 className="text-xl font-semibold">Launch & Maintain</h3>
+        <h3 className="text-xl font-semibold">Recreating Responsible Animation</h3>
         <p className="text-gray-400 text-sm mt-2">
-          We deploy your solution seamlessly and ensure continuous performance
-          with proactive monitoring.
+          After feedback rounds, I refine the video for accuracy, pacing, and storytelling impact — delivering in the best formats for your platform.
         </p>
       </div>
     </div>
@@ -355,10 +353,9 @@ export function DevelopmentTestProcess() {
 
       {/* Description Section */}
       <div className="mt-4">
-        <h3 className="text-xl font-semibold">Development & Test</h3>
+        <h3 className="text-xl font-semibold">Making 3D Map Thumbnail</h3>
         <p className="text-gray-400 text-sm mt-2">
-          We craft tailored solutions for your goals and rigorously test them —
-          with just the right amount of memes.
+          I study your video’s theme, target audience, and competitors to define the right style and emotional hook for your thumbnail.
         </p>
       </div>
     </div>
@@ -436,10 +433,9 @@ function DiscoveryAnalysisProcess() {
 
       {/* Title & Description */}
       <div className="pt-4">
-        <h3 className="text-xl font-semibold">Discovery & Analysis</h3>
+        <h3 className="text-xl font-semibold">Editing Like Johnny Harris</h3>
         <p className="text-gray-400 text-sm mt-2">
-          We explore your product landscape and uncover actionable strategies to
-          guide long-term direction.
+          We discuss your goals, target audience, and style. I analyze your references, script, or raw footage to shape a strong editing direction.
         </p>
       </div>
     </div>
