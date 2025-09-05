@@ -18,6 +18,7 @@ import {
   Search,
   ShieldCheck,
   Zap,
+  Globe2,
 } from "lucide-react";
 import { cardVariants } from "@/utils/motionConfig";
 
@@ -84,40 +85,18 @@ function BusinessChatbotCard() {
     <div className="bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] text-white rounded-2xl p-6 border border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between min-h-[350px] md:min-h-[500px]">
       <div>
         <div className="mb-3 text-sm text-gray-400 flex items-center gap-2">
-          <Bot className="text-green-400" size={20} />
-          Smart Interaction Layer
+          <span className="text-2xl">🌍</span> Custom Map
         </div>
-        <div className="bg-[#1e1e1e] p-4 rounded-lg space-y-3 border border-gray-700">
-          <div className="bg-[#2a2a2a] px-3 py-2 rounded-lg w-4/5 text-sm">
-            👋 Hi! Need help choosing a plan?
-          </div>
-          <div className="bg-[#005f73] px-3 py-2 rounded-lg w-3/5 text-sm ml-auto text-white">
-            Show me options
-          </div>
-          <div className="bg-[#2a2a2a] px-3 py-2 rounded-lg w-4/5 text-sm">
-            Here are 3 based on your usage 👇
-          </div>
-          <div className="flex flex-wrap gap-2 text-xs text-gray-400 pt-2 border-t border-gray-700">
-            <span className="bg-[#222] px-2 py-1 rounded-full flex items-center gap-1">
-              <Zap size={12} className="text-yellow-400" /> GPT-4 Response
-            </span>
-            <span className="bg-[#222] px-2 py-1 rounded-full flex items-center gap-1">
-              <ShieldCheck size={12} className="text-blue-400" /> End-to-End
-              Encrypted
-            </span>
-            <span className="bg-[#222] px-2 py-1 rounded-full flex items-center gap-1">
-              <MessageSquareText size={12} className="text-green-400" />{" "}
-              Multilingual
-            </span>
+        <div className="bg-[#1e1e1e] p-14 px-14 rounded-lg space-y-3 border border-gray-700">
+          <div className="bg-[#2a2a2a] px-3 py-6 rounded-lg text-xl">
+            Create professional, custom-styled maps from Mapbox and integrate them into GeoLayers 3.
           </div>
         </div>
       </div>
       <div className="mt-6">
-        <h3 className="text-lg font-semibold mb-1">Business Chatbot</h3>
+        <h3 className="text-lg font-semibold mb-1">Styled Maps for Your Projects</h3>
         <p className="text-sm text-gray-400">
-          Engage users 24/7 with intelligent AI chatbots that automate
-          onboarding, support, and product recommendations — all multilingual
-          and secure.
+          Perfect for data visualization, storytelling, and documentaries.
         </p>
       </div>
     </div>

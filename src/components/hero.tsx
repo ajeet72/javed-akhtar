@@ -68,7 +68,7 @@ export default function HeroSection({ id }: { id: string }) {
               ease: "easeInOut",
             }}
           >
-            Hello! I am <span className="text-purple-400">Ajeet Sharma</span>
+            Hello! I am <span className="text-purple-400">Md Javed Akhtar</span>
           </motion.div>
         </div>
 
@@ -79,9 +79,9 @@ export default function HeroSection({ id }: { id: string }) {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
         >
-          A Developer who <br />
+          A Video Editor who <br />
           <span className="text-4xl sm:text-5xl font-bold">
-            Builds the engine before <br /> polishing the paint
+            Who Shapes the story before <br /> adding the effects
             <span className="relative inline-block">
               <span className="text-purple-400 z-10 relative"></span>
               <motion.span
@@ -102,7 +102,7 @@ export default function HeroSection({ id }: { id: string }) {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
           >
-            Because speed, structure, and scalability come first.
+            Because emotion, timing, and flow matter most.
           </motion.p>
         </motion.div>
       </div>
@@ -130,7 +130,7 @@ export default function HeroSection({ id }: { id: string }) {
               repeat: Infinity,
             }}
           >
-            Full Stack Developer.
+            Video Editor.
           </motion.span>
         </h1>
 
@@ -140,7 +140,7 @@ export default function HeroSection({ id }: { id: string }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
         >
-          A self-taught Full Stack Developer with 1+ years of experience, building scalable web applications and backend systems. I craft high-performance digital solutions that balance technical excellence with real-world impact.
+          A passionate video editor with 3+ years of experience, creating engaging edits, motion graphics, map animations, and thumbnails. I craft visuals that blend storytelling, design, and technical skill to deliver content with real impact.
         </motion.p>
       </motion.div>
     </div>
