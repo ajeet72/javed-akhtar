@@ -43,7 +43,7 @@ export default function HeroSection({ id }: { id: string }) {
               />
               <motion.img
                 src="/ajeet.png"
-                alt="Ajeet Sharma"
+                alt="Javed Akhtar"
                 className="rounded-full absolute inset-0 w-full h-full mt-3"
                 initial={{ y: 80, scale: 0.9 }}
                 animate={{ y: 0, scale: 1 }}
