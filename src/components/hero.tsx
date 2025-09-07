@@ -130,7 +130,7 @@ export default function HeroSection({ id }: { id: string }) {
               repeat: Infinity,
             }}
           >
-            Video Editor.
+            Video Editor/Animator.
           </motion.span>
         </h1>
 
@@ -140,7 +140,7 @@ export default function HeroSection({ id }: { id: string }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
         >
-          A passionate video editor with 3+ years of experience, creating engaging edits, motion graphics, map animations, and thumbnails. I craft visuals that blend storytelling, design, and technical skill to deliver content with real impact.
+          A passionate video editor/Animator with 3+ years of experience, creating engaging edits, motion graphics, map animations, and thumbnails design. I craft visuals that blend with storytelling, design, and technical skill to deliver content with real impact.
         </motion.p>
       </motion.div>
     </div>
