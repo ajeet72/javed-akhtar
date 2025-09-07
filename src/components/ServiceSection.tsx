@@ -125,7 +125,7 @@ export function BusinessChatbotCard() {
             initial={{ x: "100%", opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: "-100%", opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            transition={{ duration: 0.8, }}
             className="w-full h-full object-cover absolute top-0 left-0"
           />
         </AnimatePresence>
@@ -144,12 +144,12 @@ export function BusinessChatbotCard() {
         <h3 className="text-xl font-semibold mb-2">
           Styled Maps for Your Projects
         </h3>
-        <p className="text-sm text-gray-400 leading-relaxed">
-          Perfect for data visualization, storytelling, and documentaries.
-        </p>
-        <p className="text-sm text-gray-300 mt-3">
+        <p className="text-sm text-gray-300 leading-relaxed">
           Create professional, custom-styled maps from <span className="text-white font-medium">Mapbox</span> and
           integrate them into <span className="text-white font-medium">GeoLayers 3</span>.
+        </p>
+        <p className="text-sm text-gray-400 mt-3">
+          Perfect for data visualization, storytelling, and documentaries.
         </p>
       </div>
 
@@ -159,7 +159,7 @@ export function BusinessChatbotCard() {
           <Layers size={12} className="text-purple-400" /> GeoLayers 3
         </span>
         <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
-          <Film size={12} className="text-red-400" /> Storytelling
+          <Film size={12} className="text-red-400" /> Maptiler
         </span>
         <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
           <Map size={12} className="text-green-400" /> Mapbox

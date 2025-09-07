@@ -42,7 +42,7 @@ export default function HeroSection({ id }: { id: string }) {
                 style={{ zIndex: 1 }}
               />
               <motion.img
-                src="/ajeet.png"
+                src="/javd.png"
                 alt="Javed Akhtar"
                 className="rounded-full absolute inset-0 w-full h-full mt-3"
                 initial={{ y: 80, scale: 0.9 }}
