@@ -1,6 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import CenterButton from "./centerButton";
+import { Map, Film, Sparkles, Layers } from "lucide-react";
+
 
 import {
   Bot,
@@ -80,34 +82,74 @@ export function FeatureCards() {
   );
 }
 
-function BusinessChatbotCard() {
+
+export function BusinessChatbotCard() {
   return (
-    <div className="bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] text-white rounded-2xl p-6 border border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between min-h-[350px] md:min-h-[500px]">
-      <div>
-        <div className="mb-3 text-sm text-gray-400 flex items-center gap-2">
-          <span className="text-2xl">🌍</span> Custom Map
-        </div>
-        <div className="bg-[#1e1e1e] p-14 px-14 rounded-lg space-y-3 border border-gray-700">
-          <motion.div
-            initial={{ y: 140, scale: 0.9 }}
-            animate={{ y: 0, scale: 1 }}
-            transition={{ type: "spring", stiffness: 50, damping: 25 }}
-            style={{ zIndex: 2 }}
-            className="bg-[#2a2a2a] px-3 py-6 rounded-lg text-xl"
-          >
-            Create professional, custom-styled maps from Mapbox and integrate them into GeoLayers 3.
-          </motion.div>
-        </div>
+    <motion.div
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative bg-gradient-to-br from-[#0D0D0D] via-[#1A1A1A] to-black text-white rounded-2xl p-6 border border-gray-800 shadow-lg hover:shadow-2xl transition-all flex flex-col justify-between min-h-[350px] md:min-h-[500px] overflow-hidden"
+    >
+      {/* Cinematic Glow */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-red-900/20 via-transparent to-purple-800/20 blur-3xl"></div>
+
+      {/* Top Tag */}
+      <div className="mb-4 text-sm text-gray-400 flex items-center gap-2 relative z-10">
+        <Map className="text-red-400" size={20} />
+        Custom Map
       </div>
-      <div className="mt-6">
-        <h3 className="text-lg font-semibold mb-1">Styled Maps for Your Projects</h3>
-        <p className="text-sm text-gray-400">
+
+      {/* Preview / Thumbnail */}
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="relative w-full h-40 md:h-56 rounded-xl overflow-hidden border border-gray-700 shadow-md"
+      >
+        <img
+          src="/mapImages/13.png"
+          alt="Custom Map Preview"
+          className="w-full h-full object-cover"
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+          <div className="flex items-center gap-2 text-xs text-gray-300">
+            <Film size={14} className="text-red-400" />
+            Cinematic Showcase
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Bottom Content */}
+      <div className="mt-6 relative z-10">
+        <h3 className="text-xl font-semibold mb-2">
+          Styled Maps for Your Projects
+        </h3>
+        <p className="text-sm text-gray-400 leading-relaxed">
           Perfect for data visualization, storytelling, and documentaries.
         </p>
+        <p className="text-sm text-gray-300 mt-3">
+          Create professional, custom-styled maps from <span className="text-white font-medium">Mapbox</span> and
+          integrate them into <span className="text-white font-medium">GeoLayers 3</span>.
+        </p>
       </div>
-    </div>
+
+      {/* Tags */}
+      <div className="flex flex-wrap gap-2 text-xs text-gray-400 pt-4 relative z-10">
+        <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
+          <Layers size={12} className="text-purple-400" /> GeoLayers 3
+        </span>
+        <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
+          <Film size={12} className="text-red-400" /> Storytelling
+        </span>
+        <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
+          <Map size={12} className="text-green-400" /> Mapbox
+        </span>
+      </div>
+    </motion.div>
   );
 }
+
 
 function MvpWebAppCard() {
   return (

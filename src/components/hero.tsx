@@ -81,7 +81,7 @@ export default function HeroSection({ id }: { id: string }) {
         >
           A Video Editor who <br />
           <span className="text-4xl sm:text-5xl font-bold">
-            Who Shapes the story before <br /> adding the effects
+            Shapes the story before <br /> adding the effects
             <span className="relative inline-block">
               <span className="text-purple-400 z-10 relative"></span>
               <motion.span
