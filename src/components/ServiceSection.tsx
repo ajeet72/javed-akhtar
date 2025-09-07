@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import CenterButton from "./centerButton";
 import { Map, Film, Sparkles, Layers } from "lucide-react";
 
@@ -23,6 +23,7 @@ import {
   Globe2,
 } from "lucide-react";
 import { cardVariants } from "@/utils/motionConfig";
+import { useEffect, useState } from "react";
 
 export default function ServiceSection({ id }: { id: string }) {
   return (
@@ -82,8 +83,18 @@ export function FeatureCards() {
   );
 }
 
-
 export function BusinessChatbotCard() {
+  const images = ["/mapImages/13.png", "/mapImages/1.png", "/mapImages/2.png"]; // Add your image paths
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 2000); // Change image every 2 seconds (adjust as needed)
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <motion.div
       whileInView={{ opacity: 1, y: 0 }}
@@ -99,18 +110,26 @@ export function BusinessChatbotCard() {
         Custom Map
       </div>
 
-      {/* Preview / Thumbnail */}
+      {/* Preview / Thumbnail with Slideshow */}
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.8 }}
         className="relative w-full h-40 md:h-56 rounded-xl overflow-hidden border border-gray-700 shadow-md"
       >
-        <img
-          src="/mapImages/13.png"
-          alt="Custom Map Preview"
-          className="w-full h-full object-cover"
-        />
+        <AnimatePresence>
+          <motion.img
+            key={currentImageIndex}
+            src={images[currentImageIndex]}
+            alt="Custom Map Preview"
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: "-100%", opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="w-full h-full object-cover absolute top-0 left-0"
+          />
+        </AnimatePresence>
+
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
           <div className="flex items-center gap-2 text-xs text-gray-300">
