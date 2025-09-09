@@ -1,7 +1,7 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import CenterButton from "./centerButton";
-import { Map, Film, Sparkles, Layers } from "lucide-react";
+import { Map, Film, Sparkles, Layers, Image, Palette, Clapperboard } from "lucide-react";
 
 
 import {
@@ -56,7 +56,7 @@ export function FeatureCards() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <BusinessChatbotCard />
+          <CustomMap />
         </motion.div>
 
         <motion.div
@@ -66,7 +66,7 @@ export function FeatureCards() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <MvpWebAppCard />
+          <CustomThumbnail />
         </motion.div>
 
         <motion.div
@@ -83,7 +83,7 @@ export function FeatureCards() {
   );
 }
 
-export function BusinessChatbotCard() {
+export function CustomMap() {
   const images = ["/mapImages/13.png", "/mapImages/1.png", "/mapImages/2.png"]; // Add your image paths
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -168,6 +168,94 @@ export function BusinessChatbotCard() {
     </motion.div>
   );
 }
+
+
+
+export function CustomThumbnail() {
+  const images = ["/thumbnailImages/thumbnail1.png", "/thumbnailImages/thumbnail2.png", "/thumbnailImages/thumbnail3.png"]; // Add your image paths
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 2000); // Change image every 2 seconds (adjust as needed)
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <motion.div
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative bg-gradient-to-br from-[#0D0D0D] via-[#1A1A1A] to-black text-white rounded-2xl p-6 border border-gray-800 shadow-lg hover:shadow-2xl transition-all flex flex-col justify-between min-h-[350px] md:min-h-[500px] overflow-hidden"
+    >
+      {/* Cinematic Glow */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-red-900/20 via-transparent to-purple-800/20 blur-3xl"></div>
+
+      {/* Top Tag */}
+      <div className="mb-4 text-sm text-gray-400 flex items-center gap-2 relative z-10">
+        <Image className="text-red-400" size={20} />
+        Custom Thumbnail
+      </div>
+
+      {/* Preview / Thumbnail with Slideshow */}
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="relative w-full h-40 md:h-56 rounded-xl overflow-hidden border border-gray-700 shadow-md"
+      >
+        <AnimatePresence>
+          <motion.img
+            key={currentImageIndex}
+            src={images[currentImageIndex]}
+            alt="Custom Map Preview"
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: "-100%", opacity: 0 }}
+            transition={{ duration: 0.8, }}
+            className="w-full h-full object-fit absolute top-0 left-0"
+          />
+        </AnimatePresence>
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+          <div className="flex items-center gap-2 text-xs text-gray-300">
+            <Film size={14} className="text-red-400" />
+            Cinematic Showcase
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Bottom Content */}
+      <div className="mt-6 relative z-10">
+        <h3 className="text-xl font-semibold mb-2">
+          High-Quality YouTube Thumbnails
+        </h3>
+        <p className="text-sm text-gray-300 leading-relaxed">
+          Get thumbnails designed to grab attention and increase clicks.
+        </p>
+        <p className="text-sm text-gray-400 mt-3">
+           Tailored to your script, references, and channel style.
+        </p>
+      </div>
+
+      {/* Tags */}
+      <div className="flex flex-wrap gap-2 text-xs text-gray-400 pt-4 relative z-10">
+        <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
+          <Palette size={12} className="text-purple-400" /> Photoshop
+        </span>
+        <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
+          <Clapperboard size={12} className="text-red-400" /> After effects
+        </span>
+        <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
+          <Cpu size={12} className="text-green-400" /> AI
+        </span>
+      </div>
+    </motion.div>
+  );
+}
+
 
 
 function MvpWebAppCard() {
