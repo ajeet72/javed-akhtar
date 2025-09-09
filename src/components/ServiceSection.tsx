@@ -1,7 +1,7 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import CenterButton from "./centerButton";
-import { Map, Film, Sparkles, Layers, Image, Palette, Clapperboard } from "lucide-react";
+import { Map, Film, Sparkles, Layers, Image, Palette, Clapperboard, Scissors } from "lucide-react";
 
 
 import {
@@ -76,7 +76,7 @@ export function FeatureCards() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <MaintenanceTrackerCard />
+          <VideoEditingServices />
         </motion.div>
       </motion.div>
     </div>
@@ -258,57 +258,73 @@ export function CustomThumbnail() {
 
 
 
-function MvpWebAppCard() {
+export function VideoEditingServices() {
   return (
-    <div className="bg-gradient-to-br from-[#1A0E2A] via-[#1C112D] to-[#11071F] text-white rounded-2xl p-6 border border-gray-800 shadow-md hover:shadow-xl transition-all flex flex-col justify-between min-h-[350px] md:min-h-[500px]">
-      <div>
-        <div className="mb-3 text-sm text-gray-400 flex items-center gap-2">
-          <LayoutDashboard className="text-cyan-400" size={20} />
-          Build Engine + Dev Metrics
-        </div>
-        <div className="bg-[#1e1e1e] rounded-lg p-4 space-y-2 border border-gray-700 text-xs font-mono text-green-400">
-          <p>&gt; npm run build</p>
-          <p>✔ Optimizing images & fonts</p>
-          <p>✔ Bundling 4 routes (SSG)</p>
-          <p className="text-yellow-400">⚠ LCP: 1.9s - Optimization Needed</p>
-        </div>
-        <div className="grid grid-cols-2 gap-3 text-sm mt-3 text-gray-300">
-          <div className="bg-[#1a1a1a] p-3 rounded-lg flex flex-col text-center">
-            <Users size={18} className="mx-auto text-purple-400" />
-            <span>Client-Ready MVP</span>
-            <span className="text-green-400 text-xs">~30 days</span>
-          </div>
-          <div className="bg-[#1a1a1a] p-3 rounded-lg flex flex-col text-center">
-            <Cpu size={18} className="mx-auto text-orange-400" />
-            <span>Scalable Backend</span>
-            <span className="text-yellow-400 text-xs">Auto Scaling</span>
-          </div>
-        </div>
-        <div className="text-xs text-gray-400 mt-3 border-t border-gray-700 pt-2 space-y-1">
-          <div className="flex items-center gap-2">
-            <BadgeCheck size={14} className="text-green-400" /> CI/CD Pipeline
-            Setup
-          </div>
-          <div className="flex items-center gap-2">
-            <BadgeCheck size={14} className="text-green-400" /> Auth + Role
-            Access
-          </div>
-          <div className="flex items-center gap-2">
-            <BadgeCheck size={14} className="text-green-400" /> REST & GraphQL
-            APIs
-          </div>
-        </div>
+    <motion.div
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative bg-gradient-to-br from-[#0D0D0D] via-[#1A1A1A] to-black text-white rounded-2xl p-6 border border-gray-800 shadow-lg hover:shadow-2xl transition-all flex flex-col justify-between min-h-[350px] md:min-h-[500px] overflow-hidden"
+    >
+      {/* Cinematic Glow */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-red-900/20 via-transparent to-purple-800/20 blur-3xl"></div>
+
+      {/* Top Tag */}
+      <div className="mb-4 text-sm text-gray-400 flex items-center gap-2 relative z-10">
+        <Clapperboard className="text-red-400" size={20} />
+        Video Editing Services
       </div>
-      <div className="mt-6">
-        <h3 className="text-lg font-semibold mb-1">
-          MVP & Web App Development
+
+      {/* Video Preview */}
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="relative w-full h-40 md:h-56 rounded-xl overflow-hidden border border-gray-700 shadow-md"
+      >
+        <video
+          src="/videoEditingService/for video editing service low one.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover absolute top-0 left-0"
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+          <div className="flex items-center gap-2 text-xs text-gray-300">
+            <Film size={14} className="text-red-400" />
+            Cinematic Showcase
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Bottom Content */}
+      <div className="mt-6 relative z-10">
+        <h3 className="text-xl font-semibold mb-2">
+          Transform Raw Footage to Stories
         </h3>
-        <p className="text-sm text-gray-400">
-          From dev metrics to deploy — get a robust, scalable MVP or web app
-          tailored to your startup’s goals, fast.
+        <p className="text-sm text-gray-300 leading-relaxed">
+          Professional video edits that captivate and boost engagement.
+        </p>
+        <p className="text-sm text-gray-400 mt-3">
+          From simple edits to documentary-style productions.
         </p>
       </div>
-    </div>
+
+      {/* Tags */}
+      <div className="flex flex-wrap gap-2 text-xs text-gray-400 pt-4 relative z-10">
+        <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
+          <Palette size={12} className="text-purple-400" /> Photoshop
+        </span>
+        <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
+          <Clapperboard size={12} className="text-red-400" /> After Effects
+        </span>
+        <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
+          <Scissors size={12} className="text-green-400" /> Premier Pro
+        </span>
+      </div>
+    </motion.div>
   );
 }
 
