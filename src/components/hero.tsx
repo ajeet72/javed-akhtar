@@ -36,13 +36,13 @@ export default function HeroSection({ id }: { id: string }) {
           <div className="flex justify-center relative w-70 h-70">
             <div className="w-full h-full rounded-full overflow-hidden relative">
               <img
-                src="/backgroundajeet.png"
+                src="/javed bg.jpg"
                 alt="Background"
                 className="w-full h-full rounded-full"
                 style={{ zIndex: 1 }}
               />
               <motion.img
-                src="/javd.png"
+                src="/javed1.png"
                 alt="Javed Akhtar"
                 className="rounded-full absolute inset-0 w-full h-full mt-3"
                 initial={{ y: 80, scale: 0.9 }}
