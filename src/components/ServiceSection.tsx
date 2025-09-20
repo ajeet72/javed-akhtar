@@ -10,17 +10,13 @@ import {
   Cpu,
   Wrench,
   Activity,
-  MessageSquareText,
-  LayoutDashboard,
   BadgeCheck,
   Cloud,
   CreditCard,
   TrendingUp,
   Globe,
   Search,
-  ShieldCheck,
   Zap,
-  Globe2,
 } from "lucide-react";
 import { cardVariants } from "@/utils/motionConfig";
 import { useEffect, useState } from "react";

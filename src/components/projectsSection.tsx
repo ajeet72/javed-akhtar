@@ -21,10 +21,9 @@ export default function ProjectsSection({ id }: { id: string }) {
         video="/videoEditingService/project2.mp4"
       />
       <ProjectCard
-        title="Little Diet E-commerce Website"
-        description="Developed a fully responsive e-commerce website for Little Diet, a baby products brand, using TailwindCSS. Ensured smooth performance across all devices and maintained consistent communication with the client, integrating feedback promptly. The project was successfully delivered and resulted in a four-figure earning."
-        image="/projectImage/littledietFull.png"
-        projectUrl="https://www.littlediet.in/"
+        title="Thumbnail design project"
+        description="Created high-impact YouTube thumbnails using Photoshop and After Effects for advanced compositing. Focused on bold typography, balanced composition, and strong visual contrast to maximize click-through rate and audience engagement."
+        image="/projectImage/all thumbnail photo.jpg"
         scrollImage={true}
       />
       <ProjectCard
@@ -33,21 +32,6 @@ export default function ProjectsSection({ id }: { id: string }) {
         image="/projectImage/queueDesign.png"
         projectUrl="https://paytm-iota.vercel.app/"
         scrollImage={false}
-        reverse={true}
-      />
-      <ProjectCard
-        title="Beats Product Landing Page UI"
-        description="Developed a visually stunning and fully responsive landing page for Beats 3 using HTML and CSS. The design features a sleek dark theme, modern typography, and an engaging layout with brand integrations like Apple, Spotify, Amazon, and YouTube. Included interactive CTAs and smooth UI elements to simulate a real-world product experience."
-        image="/projectImage/beatsFull.png"
-        projectUrl="https://ajeet72.github.io/beats/"
-        scrollImage={true}
-      />
-      <ProjectCard
-        title="PW Skills Website Clone"
-        description="Recreated the PW Skills website using HTML, CSS, and JavaScript with pixel-perfect accuracy. The project includes responsive layouts, a multi-level navigation menu, search functionality, and clean UI components. This clone demonstrates my frontend skills in layout design, responsiveness, and attention to detail."
-        image="/projectImage/pwskillsFull.png"
-        projectUrl="https://ajeet72.github.io/pwskills/"
-        scrollImage={true}
         reverse={true}
       />
     </section>

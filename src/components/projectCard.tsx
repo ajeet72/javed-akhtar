@@ -8,7 +8,7 @@ interface ProjectCardProps {
   description: string;
   image?: string; // optional now
   video?: string; // new optional video
-  projectUrl: string;
+  projectUrl?: string;
   scrollImage: boolean;
   reverse?: boolean;
 }
@@ -130,13 +130,66 @@ const ProjectCard: FC<ProjectCardProps> = ({
       </motion.div>
 
       {/* Image / Video Section */}
-      <Link
-        href={projectUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block"
-        aria-label={`Visit ${title} project`}
-      >
+      {/* Image / Video Section */}
+      {projectUrl ? (
+        <Link
+          href={projectUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+          aria-label={`Visit ${title} project`}
+        >
+          <motion.div
+            className={`bg-[#1A0B2E] rounded-3xl shadow-lg overflow-hidden ${
+              reverse ? "pt-10 pr-6" : "pt-10 pl-6"
+            }`}
+            variants={imageVariants}
+            whileHover="hover"
+            style={{ height: scrollImage ? "300px" : "auto" }}
+          >
+            <motion.div
+              className="w-full"
+              animate={
+                scrollImage && !video
+                  ? { y: ["0%", "-85%", "0%"] }
+                  : undefined
+              }
+              transition={
+                scrollImage && !video
+                  ? {
+                      duration: 60,
+                      ease: "linear",
+                      repeat: Infinity,
+                    }
+                  : undefined
+              }
+              variants={{
+                hover: {
+                  scale: 1.02,
+                  boxShadow: "0 20px 25px -5px rgba(168, 85, 247, 0.2)",
+                },
+              }}
+            >
+              {video ? (
+                <motion.video
+                  src={video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="lg:w-6xl w-6xl h-auto rounded-tl-lg"
+                />
+              ) : (
+                <motion.img
+                  src={image || ""}
+                  alt={`${title} preview`}
+                  className="lg:w-6xl w-6xl h-auto rounded-tl-lg transition-all duration-90000"
+                />
+              )}
+            </motion.div>
+          </motion.div>
+        </Link>
+      ) : (
         <motion.div
           className={`bg-[#1A0B2E] rounded-3xl shadow-lg overflow-hidden ${
             reverse ? "pt-10 pr-6" : "pt-10 pl-6"
@@ -155,7 +208,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             transition={
               scrollImage && !video
                 ? {
-                    duration: 20,
+                    duration: 60,
                     ease: "linear",
                     repeat: Infinity,
                   }
@@ -181,12 +234,13 @@ const ProjectCard: FC<ProjectCardProps> = ({
               <motion.img
                 src={image || ""}
                 alt={`${title} preview`}
-                className="lg:w-6xl w-6xl h-auto rounded-tl-lg transition-all duration-300"
+                className="lg:w-6xl w-6xl h-auto rounded-tl-lg transition-all duration-90000"
               />
             )}
           </motion.div>
         </motion.div>
-      </Link>
+      )}
+
     </motion.div>
   );
 };
