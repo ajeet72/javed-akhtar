@@ -95,7 +95,6 @@ export function ProcessCard({
 
   const handleMouseEnter = () => {
     if (playerRef.current && playerRef.current.playVideo) {
-      playerRef.current.mute(); // allow autoplay
       playerRef.current.playVideo();
     }
   };
@@ -136,14 +135,6 @@ export function ProcessCard({
             allowFullScreen
             className="absolute top-0 left-0"
           ></iframe>
-
-          {/* Fullscreen Button */}
-          <button
-            onClick={handleFullScreen}
-            className="absolute bottom-3 right-3 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition shadow-md"
-          >
-            <Maximize2 className="w-5 h-5" />
-          </button>
         </div>
 
         {/* Title & Description */}

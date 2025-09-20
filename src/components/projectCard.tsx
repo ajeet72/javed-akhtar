@@ -6,7 +6,8 @@ import Link from "next/link";
 interface ProjectCardProps {
   title: string;
   description: string;
-  image: string;
+  image?: string; // optional now
+  video?: string; // new optional video
   projectUrl: string;
   scrollImage: boolean;
   reverse?: boolean;
@@ -16,6 +17,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   title,
   description,
   image,
+  video,
   projectUrl,
   scrollImage,
   reverse = false,
@@ -127,7 +129,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         </motion.div>
       </motion.div>
 
-      {/* Image Section */}
+      {/* Image / Video Section */}
       <Link
         href={projectUrl}
         target="_blank"
@@ -141,17 +143,17 @@ const ProjectCard: FC<ProjectCardProps> = ({
           }`}
           variants={imageVariants}
           whileHover="hover"
-          style={{ height: scrollImage ? "300px" : "auto" }} // fixed height
+          style={{ height: scrollImage ? "300px" : "auto" }}
         >
           <motion.div
             className="w-full"
             animate={
-              scrollImage
-                ? { y: ["0%", "-85%", "0%"] } // scroll full up and back
+              scrollImage && !video
+                ? { y: ["0%", "-85%", "0%"] }
                 : undefined
             }
             transition={
-              scrollImage
+              scrollImage && !video
                 ? {
                     duration: 20,
                     ease: "linear",
@@ -166,11 +168,22 @@ const ProjectCard: FC<ProjectCardProps> = ({
               },
             }}
           >
-            <motion.img
-              src={image}
-              alt={`${title} preview`}
-              className="lg:w-4xl w-6xl h-auto rounded-tl-lg transition-all duration-300"
-            />
+            {video ? (
+              <motion.video
+                src={video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="lg:w-6xl w-6xl h-auto rounded-tl-lg"
+              />
+            ) : (
+              <motion.img
+                src={image || ""}
+                alt={`${title} preview`}
+                className="lg:w-6xl w-6xl h-auto rounded-tl-lg transition-all duration-300"
+              />
+            )}
           </motion.div>
         </motion.div>
       </Link>
