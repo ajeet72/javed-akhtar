@@ -1,7 +1,7 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import CenterButton from "./centerButton";
-import { Map, Film, Sparkles, Layers, Image, Palette, Clapperboard, Scissors } from "lucide-react";
+import { Map, Film, Sparkles, Layers, Image, Palette, Clapperboard, Scissors, FileText } from "lucide-react";
 
 
 import {
@@ -387,7 +387,7 @@ export function AIDashboard() {
   return (
     <div className="flex flex-col items-center justify-center px-6 text-white overflow-x-hidden">
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-7xl"
+        className="max-w-7xl"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.5 }}
@@ -395,12 +395,7 @@ export function AIDashboard() {
         <motion.div custom="left" variants={cardVariants} initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}>
-          <IntegrationCard />
-        </motion.div>
-        <motion.div custom="right" variants={cardVariants} initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}>
-          <AnalyticsCard />
+          <CustomPdf />
         </motion.div>
       </motion.div>
     </div>
@@ -408,6 +403,79 @@ export function AIDashboard() {
 }
 
 // IntegrationCard.tsx
+
+
+
+
+export function CustomPdf() {
+  return (
+    <motion.div
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative bg-gradient-to-br from-[#0D0D0D] via-[#1A1A1A] to-black text-white rounded-2xl p-6 border border-gray-800 shadow-lg hover:shadow-2xl transition-all flex flex-col justify-between min-h-[350px] md:min-h-[500px] overflow-hidden"
+    >
+      {/* Cinematic Glow */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-red-900/20 via-transparent to-purple-800/20 blur-3xl"></div>
+
+      {/* Top Tag */}
+      <div className="mb-4 text-sm text-gray-400 flex items-center gap-2 relative z-10">
+        <FileText className="text-red-400" size={20} />
+        Custom Pdf
+      </div>
+
+      {/* Video Preview */}
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="relative w-full h-40 md:h-56 rounded-xl overflow-hidden border border-gray-700 shadow-md"
+      >
+        <video
+          src="/videoEditingService/PdfCard.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover absolute top-0 left-0"
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+          <div className="flex items-center gap-2 text-xs text-gray-300">
+            <Film size={14} className="text-red-400" />
+            Cinematic Showcase
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Bottom Content */}
+      <div className="mt-6 relative z-10">
+        <h3 className="text-xl font-semibold mb-2">
+          Form text to Professional Pdf
+        </h3>
+        <p className="text-sm text-gray-300 leading-relaxed">
+          Turn your text into polished, presentation-ready PDFs.
+        </p>
+        <p className="text-sm text-gray-400 mt-3">
+          Enrollment Guides, Reports, Presentations & More
+        </p>
+      </div>
+
+      {/* Tags */}
+      <div className="flex flex-wrap gap-2 text-xs text-gray-400 pt-4 relative z-10">
+        <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
+          <Palette size={12} className="text-purple-400" /> Photoshop
+        </span>
+        <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
+          <Clapperboard size={12} className="text-red-400" /> After Effects
+        </span>
+        <span className="bg-[#1a1a1a] px-3 py-1 rounded-full flex items-center gap-1">
+          <FileText size={12} className="text-green-400" /> Adobe Acrobat
+        </span>
+      </div>
+    </motion.div>
+  );
+}
 
 export function IntegrationCard() {
   return (

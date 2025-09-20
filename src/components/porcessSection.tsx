@@ -6,6 +6,9 @@ import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-javascript";
 import { motion } from 'framer-motion';
 
+import { useRef } from "react";
+import { FileText, Film, Palette, Clapperboard, Maximize2 } from "lucide-react";
+
 import {
   Gauge,
   RefreshCw,
@@ -119,6 +122,63 @@ export default function ProcessSection({ id }: { id: string }) {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+
+export function CheckingCard() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0; // Reset to start
+    }
+  };
+
+  return (
+    <motion.div
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative bg-gradient-to-br from-[#0D0D0D] via-[#1A1A1A] to-black 
+                 text-white rounded-2xl p-6 border border-gray-800 shadow-lg 
+                 hover:shadow-2xl transition-all flex flex-col justify-between 
+                 min-h-[350px] md:min-h-[500px] overflow-hidden"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Cinematic Glow */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-red-900/20 via-transparent to-purple-800/20 blur-3xl"></div>
+      {/* Video Preview */}
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="relative w-full h-40 md:h-56 rounded-xl overflow-hidden border border-gray-700 shadow-md"
+      >
+        <video
+          ref={videoRef}
+          src="/videoEditingService/PdfCard.mp4"
+          muted
+          playsInline
+          className="w-full h-full object-cover absolute top-0 left-0"
+        />
+      </motion.div>
+
+      {/* Bottom Content */}
+      <div className="mt-6 relative z-10">
+        <h3 className="text-xl font-semibold mb-2">Editing Like Johnny Harris</h3>
+        <p className="text-sm text-gray-300 leading-relaxed">
+          We discuss your goals, target audience, and style. I analyze your references, script, or raw footage to shape a strong editing direction.
+        </p>
+      </div>
+    </motion.div>
   );
 }
 
@@ -363,71 +423,82 @@ export function DevelopmentTestProcess() {
 }
 
 function DiscoveryAnalysisProcess() {
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+  const [player, setPlayer] = useState<any>(null);
+
+  // Load YT API and initialize player once
+  useEffect(() => {
+    if ((window as any).YT && (window as any).YT.Player) {
+      createPlayer();
+    } else {
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.body.appendChild(tag);
+
+      (window as any).onYouTubeIframeAPIReady = () => {
+        createPlayer();
+      };
+    }
+  }, []);
+
+  const createPlayer = () => {
+    if (iframeRef.current) {
+      const ytPlayer = new (window as any).YT.Player(iframeRef.current, {
+        events: {
+          onReady: () => setPlayer(ytPlayer),
+        },
+      });
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (player) player.playVideo();
+  };
+
+  const handleMouseLeave = () => {
+    if (player) player.pauseVideo();
+  };
+
+  const handleFullScreen = () => {
+    if (iframeRef.current) {
+      if (iframeRef.current.requestFullscreen) {
+        iframeRef.current.requestFullscreen();
+      } else if ((iframeRef.current as any).webkitRequestFullscreen) {
+        (iframeRef.current as any).webkitRequestFullscreen(); // Safari
+      } else if ((iframeRef.current as any).msRequestFullscreen) {
+        (iframeRef.current as any).msRequestFullscreen(); // IE11
+      }
+    }
+  };
+
   return (
-    <div className={cardWrapper}>
-      <div className="bg-[#1a1a1a] rounded-2xl p-4 flex flex-col h-full">
-        {/* Window Controls */}
-        <div className="flex space-x-2 mb-3">
-          <div className="w-3 h-3 bg-red-500 rounded-full" />
-          <div className="w-3 h-3 bg-yellow-500 rounded-full" />
-          <div className="w-3 h-3 bg-green-500 rounded-full" />
-        </div>
+    <div
+      className={cardWrapper}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="flex flex-col relative overflow-hidden">
+        {/* YouTube Video (no border) */}
+        <div className="relative w-full md:h-56 overflow-hidden">
+          <iframe
+            ref={iframeRef}
+            id="yt-player"
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/Cf_pCwgG36U?enablejsapi=1&controls=0"
+            
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="absolute top-0 left-0"
+          ></iframe>
 
-        {/* Main Content */}
-        <div className="grid grid-cols-2 gap-4 flex-1">
-          {/* Left Side */}
-          <div className="flex flex-col gap-11">
-            {/* Animated Bars */}
-            <div className="flex items-end justify-between h-28">
-              <div className="w-2 bg-gray-600 h-6 rounded-sm" />
-              <div className="w-2 bg-gray-600 h-8 rounded-sm" />
-              <div className="w-2 bg-gray-600 h-4 rounded-sm" />
-              <div className="w-2 bg-gray-600 h-4 rounded-sm" />
-              <div className="w-2 bg-gray-600 h-12 rounded-sm" />
-              <div className="w-2 bg-gray-600 h-6 rounded-sm" />
-              <div className="w-2 bg-indigo-500 h-18 rounded-sm animate-pulse" />
-            </div>
-
-            <div className="bg-gray-800 rounded-lg p-2 animate-pulse">
-              {/* Skeleton Text Lines */}
-              <div className="space-y-2">
-                <div className="h-2 bg-gray-700 rounded w-3/4"></div>
-                <div className="h-3 bg-gray-700 rounded w-5/6"></div>
-                <div className="h-2 bg-gray-700 rounded w-2/3"></div>
-                <div className="h-2 bg-gray-700 rounded w-5/6"></div>
-                <div className="h-2 bg-gray-700 rounded w-3/6"></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Side */}
-          <div className="flex flex-col gap-11 justify-center">
-            {/* Animated Bars */}
-            <div className="relative ml-5">
-              <Target className="w-26 h-26 text-gray-400" />
-              <div className="absolute top-11 left-12 w-3 h-3 bg-indigo-500 rounded-full animate-ping" />
-            </div>
-
-            <div className="bg-gray-800 rounded-lg p-2 animate-pulse">
-              <div className="space-y-2">
-                <div className="h-2 bg-gray-700 rounded w-5/6"></div>
-                <div className="h-2 bg-gray-700 rounded w-2/3"></div>
-                <div className="h-2 bg-gray-700 rounded w-3/4"></div>
-                <div className="h-2 bg-gray-700 rounded w-3/6"></div>
-                <div className="h-3 bg-gray-700 rounded w-5/6"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Visual Focus / Insight Tags */}
-        <div className="flex justify-between gap-2 mt-3">
-          <div className="bg-indigo-600/20 text-indigo-300 rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1">
-            <BarChart3 className="w-3 h-3" /> Churn ↑
-          </div>
-          <div className="bg-green-600/20 text-green-300 rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1">
-            🎯 PM-Fit Focus
-          </div>
+          {/* Fullscreen Button */}
+          <button
+            onClick={handleFullScreen}
+            className="absolute bottom-2 right-2 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full transition"
+          >
+            <Maximize2 className="w-4 h-4" />
+          </button>
         </div>
       </div>
 
@@ -435,7 +506,8 @@ function DiscoveryAnalysisProcess() {
       <div className="pt-4">
         <h3 className="text-xl font-semibold">Editing Like Johnny Harris</h3>
         <p className="text-gray-400 text-sm mt-2">
-          We discuss your goals, target audience, and style. I analyze your references, script, or raw footage to shape a strong editing direction.
+          We discuss your goals, target audience, and style. I analyze your
+          references, script, or raw footage to shape a strong editing direction.
         </p>
       </div>
     </div>
