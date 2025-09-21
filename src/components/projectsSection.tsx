@@ -1,5 +1,6 @@
+import { Clapperboard, Cpu } from "lucide-react";
 import CenterButton from "./centerButton";
-import ProjectCard from "./projectCard";
+import ProjectCard, { ProjectCardWithSlider } from "./projectCard";
 
 export default function ProjectsSection({ id }: { id: string }) {
   return (
@@ -26,12 +27,10 @@ export default function ProjectsSection({ id }: { id: string }) {
         image="/projectImage/all thumbnail photo.jpg"
         scrollImage={true}
       />
-      <ProjectCard
-        title="Scalable Backend System with Queue Management"
-        description="Built a robust backend using TypeScript, Express, Redis, and PostgreSQL to process user requests through an efficient queue system. Integrated Prometheus and Grafana for real-time monitoring and system visibility. Focused on performance, reliability, and secure data handling."
-        image="/projectImage/queueDesign.png"
-        projectUrl="https://paytm-iota.vercel.app/"
-        scrollImage={false}
+      <ProjectCardWithSlider
+        title="Custom Map Style"
+        description="Created engaging, data-driven maps using Mapbox and MapTiler. Inspired by leading creators like CaspianReport, Johnny Harris, and Knowledgeia. Designed cinematic visuals optimized for storytelling, documentaries, and professional presentations."
+        images={["/mapImages/1.jpg", "/mapImages/2.jpg", "/mapImages/13.jpg", "/mapImages/4.jpg", "/mapImages/5.jpg", "/mapImages/6.jpg", "/mapImages/7.jpg", "/mapImages/8.jpg", "/mapImages/9.jpg", "/mapImages/10.jpg", "/mapImages/11.jpg", "/mapImages/12.jpg", "/mapImages/13.jpg", "/mapImages/14.jpg", "/mapImages/15.jpg", "/mapImages/16.jpg", "/mapImages/17.jpg", "/mapImages/18.jpg"]}
         reverse={true}
       />
     </section>

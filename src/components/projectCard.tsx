@@ -1,7 +1,8 @@
 "use client";
-import { FC } from "react";
-import { motion } from "framer-motion";
+import { FC, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import { Clapperboard, Cpu, Film, Palette } from "lucide-react";
 
 interface ProjectCardProps {
   title: string;
@@ -246,3 +247,90 @@ const ProjectCard: FC<ProjectCardProps> = ({
 };
 
 export default ProjectCard;
+
+
+
+interface ProjectCardWithSliderProps {
+  title: string;
+  description: string;
+  images?: string[];
+  projectUrl?: string;
+  reverse?: boolean;
+}
+
+export const ProjectCardWithSlider: FC<ProjectCardWithSliderProps> = ({
+  title,
+  description,
+  images = [],
+  projectUrl,
+  reverse = false,
+}) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Auto change image every 3s
+  useEffect(() => {
+    if (!images.length) return;
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [images]);
+
+  return (
+    <motion.div
+      className={`cursor-pointer flex flex-col md:flex-row items-center justify-center px-6 sm:px-12 md:px-14 lg:px-20 xl:px-28 2xl:max-w-[1400px] 2xl:mx-auto py-12 gap-8 ${
+        reverse ? "md:flex-row-reverse" : ""
+      }`}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
+      {/* Text Section */}
+      <div
+        className={`space-y-4 w-full md:w-8xl ${
+          reverse ? "text-right" : "text-left"
+        }`}
+      >
+        <p className="text-sm text-purple-400">Featured Project</p>
+        <h3 className="text-2xl font-bold text-white">{title}</h3>
+        <p
+          className={`${
+            reverse ? "text-left" : ""
+          } relative w-full min-w-[280px] backdrop-blur-lg bg-gradient-to-r from-white/10 to-white/5 p-4 rounded-lg text-sm text-gray-300 shadow-md`}
+        >
+          {description}
+        </p>
+        <div
+          className={`flex gap-4 text-white text-xl ${
+            reverse ? "justify-end" : "justify-start"
+          }`}
+        >
+          <span>🌸</span>
+          <span>❄️</span>
+        </div>
+      </div>
+
+      {/* Image Slideshow Section */}
+      <div
+        className={`bg-[#1A0B2E] rounded-3xl shadow-lg overflow-hidden relative pt-10`}
+        style={{ width: "100%", maxWidth: "500px", height: "300px" }}
+      >
+        <AnimatePresence>
+          {images.length > 0 && (
+            <motion.img
+              key={currentImageIndex}
+              src={images[currentImageIndex]}
+              alt={`${title} preview`}
+              initial={{ y: "100%", opacity: 0 }} 
+              animate={{ y: 0, opacity: 1 }}  
+              exit={{ y: "-100%", opacity: 0 }}
+              transition={{ duration: 0.8 }}
+              className="w-full h-full object-cover absolute pr-7"
+            />
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+};
