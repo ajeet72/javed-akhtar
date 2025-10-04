@@ -21,7 +21,7 @@ export default function ContactForm({ id }: { id: string }) {
 
     try {
       const response = await fetch(
-        "https://www.form-to-email.com/api/s/N7wLbX9xxD30",
+        "https://www.form-to-email.com/api/s/hIP4-gxZlXdl",
         {
           method: "POST",
           headers: {
